@@ -80,9 +80,9 @@ class FeaturedCollection < ApplicationRecord
 
   def as_json(options = {})
     image_url = build_image_url
-    hash = { id: id,
-             title: title,
-             title_url: title_url }
+    hash = { id: ,
+             title: ,
+             title_url:  }
 
     if image_url
       hash[:image_url] = image_url

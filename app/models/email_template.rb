@@ -40,7 +40,7 @@ class EmailTemplate < ApplicationRecord
         next if template_list.any? and !template_list.include?(name)
         EmailTemplate.where(['name=?', name]).delete_all
         body = File.read(email_file)
-        EmailTemplate.create!(name: name, subject: DEFAULT_SUBJECT_HASH[name.to_sym], body: body)
+        EmailTemplate.create!(name: , subject: DEFAULT_SUBJECT_HASH[name.to_sym], body: )
       end
     end
   end

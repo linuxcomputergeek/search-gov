@@ -8,7 +8,7 @@ class Language < ApplicationRecord
   has_many :affiliates, foreign_key: :locale, primary_key: :code, inverse_of: :language
 
   def self.bing_market_for_code(code)
-    language = find_by(code: code)
+    language = find_by(code: )
 
     if language&.inferred_country_code
       "#{code}-#{language.inferred_country_code}"

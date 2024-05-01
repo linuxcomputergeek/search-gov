@@ -110,7 +110,7 @@ class IndexedDocument < ApplicationRecord
     end
     raise IndexedDocumentError, EMPTY_BODY_STATUS if document_text.blank?
 
-    self.attributes = { body: scrub_inner_text(document_text), doctype: doctype, last_crawled_at: Time.zone.now, last_crawl_status: OK_STATUS }
+    self.attributes = { body: scrub_inner_text(document_text), doctype: , last_crawled_at: Time.zone.now, last_crawl_status: OK_STATUS }
   end
 
   def extract_body_from(nokogiri_doc)

@@ -5,6 +5,6 @@ class SitemapIndexerJob < ApplicationJob
   unique :until_performed
 
   def perform(sitemap_url:, domain:)
-    SitemapIndexer.new(sitemap_url: sitemap_url, domain: domain).index
+    SitemapIndexer.new(sitemap_url: , domain: ).index
   end
 end

@@ -13,9 +13,9 @@ class NoResultsWatcher < Watcher
 
   def input(json)
     options = { affiliate_name: affiliate.name,
-                time_window: time_window,
+                time_window: ,
                 min_doc_count: distinct_user_total.to_i,
-                query_blocklist: query_blocklist,
+                query_blocklist: ,
                 size: 10 }
     no_results_query_body = WatcherNoResultsQuery.new(options).body
     input_search_request(json,

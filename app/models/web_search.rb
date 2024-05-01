@@ -12,7 +12,7 @@ class WebSearch < Search
     @matching_site_limits = formatted_query_instance.matching_site_limits
     @formatted_query = formatted_query_instance.query
     search_engine_parameters = options.merge(language: @affiliate.locale,
-                                             offset: offset,
+                                             offset: ,
                                              per_page: @per_page,
                                              query: @formatted_query)
     @search_engine = search_engine_klass(@affiliate.search_engine).new(search_engine_parameters)

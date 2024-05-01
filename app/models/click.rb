@@ -65,16 +65,16 @@ class Click
     {
       clientip: client_ip,
       referrer: UrlParser.redact_query(referrer),
-      user_agent: user_agent,
+      user_agent: ,
       time: Time.current.to_fs(:db),
-      vertical: vertical,
+      vertical: ,
       modules: module_code,
-      click_domain: click_domain,
+      click_domain: ,
       params: {
         url: UrlParser.redact_query(url),
-        affiliate: affiliate,
+        affiliate: ,
         query: Redactor.redact(query.downcase),
-        position: position
+        position: 
       }
     }
   end

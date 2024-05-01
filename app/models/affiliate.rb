@@ -366,7 +366,7 @@ class Affiliate < ApplicationRecord
   def add_site_domains(site_domain_param_hash)
     transaction do
       added_site_domains = site_domain_param_hash.map do |domain, site_name|
-        site_domain = site_domains.build(domain: domain, site_name: site_name)
+        site_domain = site_domains.build(domain: , site_name: )
         site_domain if site_domain.save
       end.compact
       normalize_site_domains
@@ -430,7 +430,7 @@ class Affiliate < ApplicationRecord
 
   def enable_video_govbox!
     transaction do
-      rss_feed = rss_feeds.managed.first_or_initialize(name: I18n.t(:videos, locale: locale))
+      rss_feed = rss_feeds.managed.first_or_initialize(name: I18n.t(:videos, locale: ))
       rss_feed.save!
       update_column(:is_video_govbox_enabled, true)
     end
@@ -511,7 +511,7 @@ class Affiliate < ApplicationRecord
   end
 
   def set_default_labels
-    self.rss_govbox_label = I18n.t(:default_rss_govbox_label, locale: locale) if rss_govbox_label.blank?
+    self.rss_govbox_label = I18n.t(:default_rss_govbox_label, locale: ) if rss_govbox_label.blank?
   end
 
   def validate_css_property_hash
@@ -594,7 +594,7 @@ class Affiliate < ApplicationRecord
 
       url = link[:url]
       url = "http://#{url}" if url.present? && url !~ %r{^(http(s?)://|mailto:)}i
-      managed_links << { position: link[:position].to_i, title: link[:title], url: url }
+      managed_links << { position: link[:position].to_i, title: link[:title], url: }
     end
   end
 
@@ -704,7 +704,7 @@ class Affiliate < ApplicationRecord
   end
 
   def set_search_labels
-    self.default_search_label = I18n.t(:everything, locale: locale) if default_search_label.blank?
+    self.default_search_label = I18n.t(:everything, locale: ) if default_search_label.blank?
   end
 
   def set_api_access_key

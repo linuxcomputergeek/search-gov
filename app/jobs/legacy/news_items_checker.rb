@@ -19,7 +19,7 @@ class NewsItemsChecker
       elapsed_real_time = Benchmark.realtime do
         news_item_ids_for_deletion = get_news_item_ids_for_deletion rss_feed_url_id, group.map(&:link).shuffle, is_throttled
       end
-      @@logger.info ({ rss_feed_url_id: rss_feed_url_id,
+      @@logger.info ({ rss_feed_url_id: ,
                        url: RssFeedUrl.find_by_id(rss_feed_url_id).url,
                        news_items_count: group.count,
                        elapsed: elapsed_real_time,
@@ -34,7 +34,7 @@ class NewsItemsChecker
     UrlStatusCodeFetcher.fetch links, is_throttled do |link, status_code|
       links_for_deletion << link if status_code =~ /404/
     end
-    NewsItem.where(rss_feed_url_id: rss_feed_url_id,
+    NewsItem.where(rss_feed_url_id: ,
                    link: links_for_deletion).pluck(:id)
   end
 end

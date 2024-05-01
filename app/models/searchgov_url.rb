@@ -199,7 +199,7 @@ class SearchgovUrl < ApplicationRecord
 
   def log_data
     {
-      url: url,
+      url: ,
       domain: URI.parse(url).host,
       orig_size: response.headers['Content-Length'],
       parsed_size: document.parsed_content&.bytesize,
@@ -222,7 +222,7 @@ class SearchgovUrl < ApplicationRecord
       content_type: document.content_type,
       created: document.created&.iso8601,
       description: document.description,
-      document_id: document_id,
+      document_id: ,
       handle: 'searchgov',
       thumbnail_url: document.thumbnail_url,
       language: document.language,
@@ -243,7 +243,7 @@ class SearchgovUrl < ApplicationRecord
   def parse_document
     Rails.logger.info "[SearchgovUrl] Parsing document for #{url}"
     if application_document?
-      ApplicationDocument.new(document: download.open, url: url)
+      ApplicationDocument.new(document: download.open, url: )
     else
       parse_html_document
     end
@@ -252,9 +252,9 @@ class SearchgovUrl < ApplicationRecord
   def parse_html_document
     if searchgov_domain.js_renderer
       js_response = JsFetcher.fetch(url)
-      HtmlDocument.new(document: js_response, url: url)
+      HtmlDocument.new(document: js_response, url: )
     else
-      HtmlDocument.new(document: response.to_s, url: url)
+      HtmlDocument.new(document: response.to_s, url: )
     end
   end
 
@@ -279,11 +279,11 @@ class SearchgovUrl < ApplicationRecord
 
   def robots_directives
     headers = response.headers.to_hash
-    RobotsTagParser.get_rules(headers: headers, user_agent: DEFAULT_USER_AGENT)
+    RobotsTagParser.get_rules(headers: , user_agent: DEFAULT_USER_AGENT)
   end
 
   def delete_document
-    I14yDocument.delete(handle: 'searchgov', document_id: document_id)
+    I14yDocument.delete(handle: 'searchgov', document_id: )
   rescue => e
     Rails.logger.error "[SearchgovUrl] Unable to delete Searchgov i14y document #{document_id}: #{e.message}".red
   end

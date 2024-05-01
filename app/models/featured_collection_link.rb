@@ -11,6 +11,6 @@ class FeaturedCollectionLink < ApplicationRecord
   belongs_to :featured_collection
 
   def as_json(options = {})
-    { title: title, url: url }
+    { title: , url: }
   end
 end

@@ -21,9 +21,9 @@ class LowQueryCtrWatcher < Watcher
 
   def input(json)
     options = { affiliate_name: affiliate.name,
-                time_window: time_window,
+                time_window: ,
                 min_doc_count: search_click_total.to_i,
-                query_blocklist: query_blocklist }
+                query_blocklist: }
     low_query_ctr_query_body = WatcherLowCtrQuery.new(options).body
     input_search_request(json,
                          indices: watcher_indexes_from_window_size(time_window),

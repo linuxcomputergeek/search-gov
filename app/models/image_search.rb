@@ -59,10 +59,10 @@ class ImageSearch
     if @error_message
       { error: @error_message }
     else
-      { total: total,
-        startrecord: startrecord,
-        endrecord: endrecord,
-        results: results }
+      { total: ,
+        startrecord: ,
+        endrecord: ,
+        results:  }
     end
   end
 

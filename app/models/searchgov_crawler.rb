@@ -12,11 +12,11 @@ class SearchgovCrawler
       discard_page_bodies: true,
       delay: (delay || robotex.delay(base_url)).to_i,
       obey_robots_txt: true,
-      skip_query_strings: skip_query_strings,
+      skip_query_strings: ,
       read_timeout: 30,
       threads: 8,
       verbose: true,
-      user_agent: user_agent,
+      user_agent: ,
     }
     @doc_links = {}
     @url_file = initialize_url_file unless srsly
@@ -62,7 +62,7 @@ class SearchgovCrawler
   def get_base_url
     response = HTTP.follow.get("http://#{domain}")
     url = response.uri.to_s
-    HtmlDocument.new(url: url, document: response.to_s).redirect_url || url
+    HtmlDocument.new(url: , document: response.to_s).redirect_url || url
   end
 
   def indexable?(page)
@@ -105,7 +105,7 @@ class SearchgovCrawler
 
   def create_or_log_url(url, depth)
     if srsly
-      SearchgovUrl.create(url: url)
+      SearchgovUrl.create(url: )
     else
       url_file << "#{url},#{depth}\n"
     end

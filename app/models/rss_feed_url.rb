@@ -83,7 +83,7 @@ class RssFeedUrl < ApplicationRecord
 
   def self.find_existing_or_initialize(url)
     normalized_url = UrlParser.normalize url
-    return new(url: url) unless normalized_url
+    return new(url: ) unless normalized_url
 
     url_without_protocol = UrlParser.strip_http_protocols normalized_url
     where('(url = ? OR url = ?)',

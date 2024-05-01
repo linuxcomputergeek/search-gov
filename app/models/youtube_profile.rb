@@ -29,7 +29,7 @@ class YoutubeProfile < ApplicationRecord
 
   def create_video_rss_feed
     unless rss_feed
-      rss_feed_url = RssFeedUrl.rss_feed_owned_by_youtube_profile.where(url: url).first_or_create!
+      rss_feed_url = RssFeedUrl.rss_feed_owned_by_youtube_profile.where(url: ).first_or_create!
       create_rss_feed!(name: channel_id, rss_feed_urls: [rss_feed_url])
     end
   end

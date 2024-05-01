@@ -68,7 +68,7 @@ class I14yDocument
   end
 
   def i14y_drawer
-    @i14y_drawer ||= I14yDrawer.find_by(handle: handle)
+    @i14y_drawer ||= I14yDrawer.find_by(handle: )
   end
   alias drawer i14y_drawer
 
@@ -110,7 +110,7 @@ class I14yDocument
   end
 
   def self.delete(handle:, document_id:)
-    doc = new(handle: handle, document_id: document_id)
+    doc = new(handle: , document_id: )
     doc.delete
   end
 
@@ -122,7 +122,7 @@ class I14yDocument
   end
 
   def self.promote(handle:, document_id:, bool: 'true')
-    update(handle: handle, document_id: document_id, promote: bool)
+    update(handle: , document_id: , promote: bool)
   end
 
   private

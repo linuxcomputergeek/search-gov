@@ -11,7 +11,7 @@ class SearchgovDomainIndexerJob < ApplicationJob
   def perform(searchgov_domain:, delay:)
     if searchgov_domain.indexing? && (url = searchgov_domain.searchgov_urls.fetch_required.first)
       SearchgovDomainIndexerJob.set(wait: delay.seconds).
-        perform_later(searchgov_domain: searchgov_domain, delay: delay)
+        perform_later(searchgov_domain: , delay: )
 
       url.fetch
     else

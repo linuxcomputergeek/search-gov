@@ -73,7 +73,7 @@ class RtuModuleStatsAnalytics
 
   def es_search(index, query_body, agg_name)
     Es::ELK.client_reader.search(
-      index: index,
+      index: ,
       body: query_body,
       size: 0
     )['aggregations'][agg_name]['buckets']

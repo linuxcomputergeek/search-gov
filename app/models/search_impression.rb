@@ -12,7 +12,7 @@ class SearchImpression
     }
     request_pairs[:diagnostics] = flatten_diagnostics_hash(search.diagnostics)
     hash = request_pairs.merge(time: Time.now.to_fs(:db),
-                               vertical: vertical,
+                               vertical: ,
                                modules: search.modules.join('|'),
                                params: clean_params(params))
 

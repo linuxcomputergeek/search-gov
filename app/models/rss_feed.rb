@@ -58,12 +58,12 @@ class RssFeed < ApplicationRecord
   end
 
   def self.find_existing_or_initialize(name, url)
-    where(name: name).
+    where(name: ).
       joins(:rss_feed_urls).
-      where(rss_feed_urls: { url: url }).
+      where(rss_feed_urls: { url:  }).
       reorder('rss_feeds.id').
       readonly(false).
-      first || new(name: name)
+      first || new(name: )
   end
 
   def self.do_not_dup_attributes

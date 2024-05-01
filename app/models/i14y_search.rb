@@ -24,7 +24,7 @@ class I14ySearch < FilterableSearch
 
   def search
     search_options = {
-      handles: handles,
+      handles: ,
       language: @affiliate.locale,
       query: formatted_query,
       size: detect_size,
@@ -125,7 +125,7 @@ class I14ySearch < FilterableSearch
 
   def domains_scope_options
     DomainScopeOptionsBuilder.build(site: @affiliate,
-                                    collection: collection,
+                                    collection: ,
                                     site_limits: @site_limits)
   end
 

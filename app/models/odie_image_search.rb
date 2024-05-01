@@ -10,9 +10,9 @@ class OdieImageSearch < OdieSearch
     @oasis_search = OasisSearch.new(query: @query,
                                     per_page: @per_page,
                                     offset: (@page - 1) * @per_page,
-                                    flickr_groups: flickr_groups,
-                                    flickr_users: flickr_users,
-                                    mrss_names: mrss_names)
+                                    flickr_groups: ,
+                                    flickr_users: ,
+                                    mrss_names: )
   end
 
   def search

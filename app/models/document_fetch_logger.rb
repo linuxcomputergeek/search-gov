@@ -17,10 +17,10 @@ class DocumentFetchLogger
 
   def log_info
     attributes.merge({
-      domain: domain,
-      time: time,
-      type: type,
-      url: url,
+      domain: ,
+      time: ,
+      type: ,
+      url: ,
     })
   end
 

@@ -7,7 +7,7 @@ class SearchgovUrlBulkUploaderJob < ApplicationJob
 
   def perform(user, filename, urls, reindex: false)
     @user = user
-    @uploader = BulkUrlUploader.new(filename, urls, reindex: reindex)
+    @uploader = BulkUrlUploader.new(filename, urls, reindex: )
 
     upload_and_index
     report_results
@@ -27,7 +27,7 @@ class SearchgovUrlBulkUploaderJob < ApplicationJob
 
   def send_results_email
     results = @uploader.results
-    email = BulkUrlUploadResultsMailer.with(user: @user, results: results).results_email
+    email = BulkUrlUploadResultsMailer.with(user: @user, results: ).results_email
     email.deliver_now!
   end
 end

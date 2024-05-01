@@ -51,7 +51,7 @@ class BoostedContentBulkUploader
       description: row[2],
       publish_start_on: extract_date(row[3]),
       publish_end_on: extract_date(row[4], nil),
-      keywords: keywords,
+      keywords: ,
       match_keyword_values_only: extract_bool(row[6]) && keywords.present?,
       status: extract_status(row[7]) }
   end

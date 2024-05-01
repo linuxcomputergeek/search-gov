@@ -29,7 +29,7 @@ class LogstashDeduper
     end
     dupe_ids.in_groups_of(SCROLL_SIZE, false) do |group|
       body = group.collect { |id| Hash[delete: { _index: index_name, _type: "search", _id: id }] }
-      client.bulk(body: body)
+      client.bulk(body:)
     end
   end
 
