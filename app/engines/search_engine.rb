@@ -68,9 +68,9 @@ class SearchEngine
     retry_count = attempt - 1
 
     response.diagnostics = {
-      result_count: result_count,
+      result_count: ,
       from_cache: cached_response.cache_namespace,
-      retry_count: retry_count,
+      retry_count: ,
       elapsed_time_ms: elapsed_ms,
       tracking_information: response.tracking_information,
     }

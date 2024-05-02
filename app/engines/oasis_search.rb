@@ -14,7 +14,7 @@ class OasisSearch < SearchEngine
   protected
 
   def params
-    params_hash = { query: query, from: offset, size: per_page }
+    params_hash = { query: , from: offset, size: per_page }
     params_hash.merge!(flickr_groups: @options[:flickr_groups].join(',')) if @options[:flickr_groups].present?
     params_hash.merge!(flickr_users: @options[:flickr_users].join(',')) if @options[:flickr_users].present?
     params_hash.merge!(mrss_names: @options[:mrss_names].join(',')) if @options[:mrss_names].present?

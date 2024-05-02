@@ -22,8 +22,8 @@ class BingSearch < SearchEngine
 
   def params
     {
-      offset: offset,
-      count: count,
+      offset: ,
+      count: ,
       mkt: market,
       q: options[:query],
       safeSearch: safe_search,

@@ -5,7 +5,7 @@ class ApiCache
     @namespace = namespace
     @cache_duration = cache_duration
     @cache_store = ActiveSupport::Cache::FileStore.new self.class.file_store_root,
-                                                       namespace: namespace,
+                                                       namespace: ,
                                                        expires_in: cache_duration
   end
 
