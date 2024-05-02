@@ -10,7 +10,7 @@ module SearchHelper
     content_tag :div, :class => "" do
       concat content_tag(:h6, t('searches.commercial_results.find_what_looking_for')) if
         t('searches.commercial_results.find_what_looking_for', :default => EMPTY_STRING) != EMPTY_STRING
-      concat simple_format(t('searches.commercial_results.see_more_image_results', link: link).html_safe)
+      concat simple_format(t('searches.commercial_results.see_more_image_results', link: ).html_safe)
     end
   end
 
@@ -20,7 +20,7 @@ module SearchHelper
     content_tag :div, :class => "" do
       concat content_tag(:h6, t('searches.commercial_results.find_what_looking_for')) if
         t('searches.commercial_results.find_what_looking_for', :default => EMPTY_STRING) != EMPTY_STRING
-      concat simple_format(t('searches.commercial_results.see_more_web_results', link: link).html_safe)
+      concat simple_format(t('searches.commercial_results.see_more_web_results', link: ).html_safe)
     end
   end
 

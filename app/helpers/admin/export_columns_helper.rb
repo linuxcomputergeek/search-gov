@@ -38,6 +38,6 @@ module Admin::ExportColumnsHelper
   def export_time_column(column, column_value)
     return unless column_value
     format = column.is_a?(User) ? '%Y-%m-%d' : :default
-    l(column_value, format: format)
+    l(column_value, format: )
   end
 end

@@ -11,7 +11,7 @@ module FormHelper
 
   def render_error_messages(record)
     if record.errors.count > 0
-      render partial: 'shared/error_messages', locals: { record: record }
+      render partial: 'shared/error_messages', locals: { record:  }
     end
   end
 end

@@ -16,6 +16,6 @@ module CssPropertiesHelper
         style << "#{css_property}: #{css_value};"
       end
     end
-    { style: style }
+    { style: }
   end
 end

@@ -1,6 +1,6 @@
 module Searches::PathsHelper
   def path_for_image_search(search_params, query)
-    image_search_params = search_params.slice(:affiliate).merge(query: query)
+    image_search_params = search_params.slice(:affiliate).merge(query: )
     image_search_path image_search_params
   end
 

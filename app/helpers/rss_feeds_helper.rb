@@ -37,7 +37,7 @@ module RssFeedsHelper
     return if rss_feed.is_managed?
     path = site_rss_feed_path site, rss_feed.id
     data = { confirm: "Are you sure you wish to remove #{rss_feed.name} from this site?" }
-    button = button_to 'Remove', path, method: :delete, data: data, class: 'btn btn-small'
+    button = button_to 'Remove', path, method: :delete, data: , class: 'btn btn-small'
     content_tag :li, button
   end
 end

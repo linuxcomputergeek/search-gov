@@ -127,7 +127,7 @@ module MobileNavigationsHelper
   end
 
   def search_nav(html, nav_class = nil)
-    render partial: 'searches/search_nav', locals: { html: html, nav_class: nav_class }
+    render partial: 'searches/search_nav', locals: { html: , nav_class:  }
   end
 
   def nav_classes(nav_items_length, related_sites_html)

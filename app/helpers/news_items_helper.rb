@@ -43,6 +43,6 @@ module NewsItemsHelper
   end
 
   def news_about_query(affiliate, query)
-    I18n.t(:'searches.news_about_query', news_label: affiliate.rss_govbox_label, query: query)
+    I18n.t(:'searches.news_about_query', news_label: affiliate.rss_govbox_label, query: )
   end
 end

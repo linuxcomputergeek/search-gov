@@ -12,7 +12,7 @@ module ResultsHelper
   def link_to_result_title(title, url, position, module_code, options = {})
     # Used for i14y results, jobs, spelling suggestions,
     # boosted, featured collections, med topics
-    click_data = { position: position, module_code: module_code }
+    click_data = { position: , module_code:  }
     link_to_if url.present?, title.html_safe, url,
                { data: { click: click_data } }.reverse_merge(options)
   end
@@ -21,25 +21,25 @@ module ResultsHelper
     # Used for Bing results
     title = translate_bing_highlights(h(result['title'])).html_safe
 
-    click_data = { position: position, module_code: 'BWEB' }
+    click_data = { position: , module_code: 'BWEB' }
     link_to title, result['unescapedUrl'], data: { click: click_data }
   end
 
   def link_to_federal_register_document_title(document, position)
-    click_data = { position: position, module_code: 'FRDOC' }
+    click_data = { position: , module_code: 'FRDOC' }
     link_to document.title.html_safe, document.html_url, { data: { click: click_data } }
   end
 
   def link_to_image_result_title(result, position, options = { tabindex: -1 })
     title = translate_bing_highlights(h(result['title'])).html_safe
 
-    click_data = { position: position, module_code: 'IMAG' }
+    click_data = { position: , module_code: 'IMAG' }
     link_to title, result['Url'], { data: { click: click_data } }.merge(options)
   end
 
   def link_to_image_thumbnail(result, position)
     title = translate_bing_highlights(h(result['title'])).html_safe
-    click_data = { position: position, module_code: 'IMAG' }
+    click_data = { position: , module_code: 'IMAG' }
 
     link_to result['Url'], data: { click: click_data } do
       image_tag(result['Thumbnail']['Url'], alt: title)
@@ -49,7 +49,7 @@ module ResultsHelper
   def link_to_indexed_document_title(result, position)
     title = translate_bing_highlights(h(result.title)).html_safe
 
-    click_data = { position: position, module_code: 'AIDOC' }
+    click_data = { position: , module_code: 'AIDOC' }
     link_to title, result.url, data: { click: click_data }
   end
 
@@ -57,7 +57,7 @@ module ResultsHelper
     # Used in govbox, images, news, video, i14y
     title = translate_bing_highlights(h(instance.title)).html_safe
 
-    click_data = { position: position, module_code: module_code }
+    click_data = { position: , module_code:  }
     link_to title, instance.link, { data: { click: click_data } }.reverse_merge(options)
   end
 
@@ -67,7 +67,7 @@ module ResultsHelper
                      when 'VIDS' then video_news_item_thumbnail_html instance
                      end
 
-    click_data = { position: position, module_code: module_code }
+    click_data = { position: , module_code:  }
     link_to thumbnail_html, instance.link, data: { click: click_data }
   end
 
@@ -84,7 +84,7 @@ module ResultsHelper
   end
 
   def link_to_related_search(search, related_term, position)
-    click_data = { position: position, module_code: 'SREL' }
+    click_data = { position: , module_code: 'SREL' }
     link_to related_term.downcase.html_safe,
             search_path(affiliate: search.affiliate.name,
                         query: strip_tags(related_term)),

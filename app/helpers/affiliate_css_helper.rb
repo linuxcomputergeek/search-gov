@@ -7,14 +7,14 @@ module AffiliateCssHelper
     value = css_property_hash[property]
     value ||= Affiliate::THEMES[:default][property]
     inner_html = content_tag :div do
-      form.text_field property, value: value
+      form.text_field property, value: 
     end
 
     inner_html << content_tag(:span, class: 'add-on add-on-colorpicker') do
       content_tag :i
     end
 
-    content_tag(:div, class: 'input-append color', data: data) { inner_html }
+    content_tag(:div, class: 'input-append color', data: ) { inner_html }
   end
 
   def render_affiliate_css_property_value(css_property_hash, property)

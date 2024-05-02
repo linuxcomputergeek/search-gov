@@ -19,6 +19,6 @@ module NewsSearchHelper
   end
 
   def localized_time_filter_date(date, format = DATE_FORMAT)
-    I18n.l date, format: format
+    I18n.l date, format: 
   end
 end

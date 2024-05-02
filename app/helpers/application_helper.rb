@@ -68,7 +68,7 @@ module ApplicationHelper
   end
 
   def render_date(datetime, locale = I18n.locale)
-    l(datetime.to_date, locale: locale, format: :slashes) unless datetime.nil?
+    l(datetime.to_date, locale: , format: :slashes) unless datetime.nil?
   end
 
   def attribution
@@ -81,7 +81,7 @@ module ApplicationHelper
   end
 
   def time_ago_in_words(from_time, include_seconds = false, options = {})
-    options.reverse_merge!(:scope => :'datetime.time_ago_in_words', include_seconds: include_seconds)
+    options.reverse_merge!(:scope => :'datetime.time_ago_in_words', include_seconds: )
     distance_of_time_in_words(from_time, Time.current, options)
   end
 

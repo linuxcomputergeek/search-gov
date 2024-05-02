@@ -15,7 +15,7 @@ module MobileHelper
 
   def dropdown_wrapper(partial, html, dropdown_id, dropdown_label)
     render partial: partial,
-           locals: { html: html, id: dropdown_id, dropdown_label: dropdown_label }
+           locals: { html: , id: dropdown_id, dropdown_label:  }
   end
 
   def font_stylesheet_link_tag(affiliate)
@@ -105,7 +105,7 @@ module MobileHelper
     render partial: 'searches/matching_site_limits',
            locals: {
                query_and_matching_sites_hash: {
-                   query: matching_site_query, matching_sites: matching_sites },
+                   query: matching_site_query, matching_sites: },
                query_from_all_sites_hash: {
                    query_from_all_sites: query_from_all_sites_link }
            }
