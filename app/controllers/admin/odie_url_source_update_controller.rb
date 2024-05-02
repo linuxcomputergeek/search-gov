@@ -31,7 +31,7 @@ module Admin
     private
 
     def enqueue_job(affiliate)
-      OdieUrlSourceUpdateJob.perform_later(affiliate: affiliate)
+      OdieUrlSourceUpdateJob.perform_later(affiliate: )
     end
   end
 end

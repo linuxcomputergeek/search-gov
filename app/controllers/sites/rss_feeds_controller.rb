@@ -84,7 +84,7 @@ class Sites::RssFeedsController < Sites::SetupSiteController
 
     @rss_feed.rss_feed_urls = existing_rss_feed_urls
     new_urls.each do |url|
-      @rss_feed.rss_feed_urls.build(rss_feed_owner_type: 'Affiliate', url: url)
+      @rss_feed.rss_feed_urls.build(rss_feed_owner_type: 'Affiliate', url: )
     end
   end
 

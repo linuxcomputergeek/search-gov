@@ -18,7 +18,7 @@ class Sites::AutodiscoveriesController < Sites::BaseController
       flash[:error] = "Invalid site URL #{@autodiscovery_url}"
     end
 
-    redirect_to site_content_path(@site), flash: flash
+    redirect_to site_content_path(@site), flash: 
   rescue ActionController::ParameterMissing
     head :bad_request
   end

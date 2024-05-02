@@ -104,7 +104,7 @@ class SearchesController < ApplicationController
                                                  :tbs,
                                                  :until_date
     document_collection = @affiliate.document_collections.find_by_id(@search_options[:dc])
-    @search_options.merge!(document_collection: document_collection)
+    @search_options.merge!(document_collection: )
   end
 
   def set_news_search_options
