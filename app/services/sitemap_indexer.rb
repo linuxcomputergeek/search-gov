@@ -8,7 +8,7 @@ class SitemapIndexer
   def initialize(sitemap_url:, domain:)
     @sitemap_url = https_url(sitemap_url)
     @domain = domain
-    @searchgov_domain = SearchgovDomain.find_by(domain: domain)
+    @searchgov_domain = SearchgovDomain.find_by(domain: )
   end
 
   def index
@@ -62,7 +62,7 @@ class SitemapIndexer
 
   def enqueue_sitemaps
     sitemaps_stream.each do |sitemap|
-      SitemapIndexerJob.perform_later(sitemap_url: sitemap[:loc].to_s, domain: domain)
+      SitemapIndexerJob.perform_later(sitemap_url: sitemap[:loc].to_s, domain: )
     end
   end
 
@@ -105,7 +105,7 @@ class SitemapIndexer
   def log_info
     {
       time: Time.now.utc.to_fs(:db),
-      domain: domain,
+      domain: ,
       sitemap: sitemap_url
     }
   end

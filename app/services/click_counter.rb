@@ -31,7 +31,7 @@ class ClickCounter
   end
 
   def update_click_count(url:, count:)
-    searchgov_url = SearchgovUrl.find_by!(url: url)
+    searchgov_url = SearchgovUrl.find_by!(url: )
     I14yDocument.update(document_id: searchgov_url.document_id,
                         click_count: count,
                         handle: 'searchgov')
