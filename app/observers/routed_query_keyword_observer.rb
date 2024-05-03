@@ -11,7 +11,7 @@ class RoutedQueryKeywordObserver < ActiveRecord::Observer
     sayt_suggestion = SaytSuggestion.
                         find_by(
                           affiliate_id: routed_query_keyword.routed_query.affiliate.id,
-                          phrase: phrase,
+                          phrase: ,
                           is_protected: true
                         )
     sayt_suggestion.update_attribute(:phrase, routed_query_keyword.keyword) if sayt_suggestion.present?
