@@ -3,7 +3,7 @@
 describe Sitemap do
   let(:domain) { 'agency.gov' }
   let(:url) { "https://#{domain}/sitemap.xml" }
-  let(:valid_attributes) { { url: url } }
+  let(:valid_attributes) { { url:  } }
 
   it { is_expected.to have_readonly_attribute(:url) }
 
@@ -31,8 +31,8 @@ describe Sitemap do
   describe 'lifecycle' do
     describe 'on create' do
       it 'is automatically indexed' do
-        expect(SitemapIndexerJob).to receive(:perform_later).with(sitemap_url: url, domain: domain)
-        described_class.create!(url: url)
+        expect(SitemapIndexerJob).to receive(:perform_later).with(sitemap_url: url, domain: )
+        described_class.create!(url: )
       end
     end
   end

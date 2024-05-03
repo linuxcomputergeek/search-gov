@@ -7,7 +7,7 @@ describe SearchgovDomainDestroyerJob do
   let(:delay) { 10 }
 
   before do
-    SearchgovDomainIndexerJob.perform_later(searchgov_domain: searchgov_domain, delay: delay)
+    SearchgovDomainIndexerJob.perform_later(searchgov_domain: , delay: )
     allow(Resque::Job).to receive(:destroy).and_call_original
     allow(searchgov_domain).to receive(:delay).and_return(delay)
   end
@@ -27,7 +27,7 @@ describe SearchgovDomainDestroyerJob do
       expect(Resque::Job).to have_received(:destroy).with('searchgov',
                                                           'SearchgovDomainIndexerJob',
                                                           searchgov_domain_id: searchgov_domain.id,
-                                                          delay: delay)
+                                                          delay: )
     end
 
     it 'ensures the queue is empty for this domain after execution' do

@@ -5,7 +5,7 @@ describe SearchgovUrlFetcherJob do
 
   let!(:searchgov_url) { SearchgovUrl.create!(url: 'https://agency.gov/') }
   let(:args) do
-    { searchgov_url: searchgov_url }
+    { searchgov_url:  }
   end
 
   it_behaves_like 'a searchgov job'

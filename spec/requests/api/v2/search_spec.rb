@@ -79,7 +79,7 @@ describe '/api/v2/search' do
 
       rss_feed = affiliate.rss_feeds.build(name: 'RSS')
       url = 'https://search.gov/all.atom'
-      rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.build(url: url)
+      rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.build(url: )
       rss_feed_url.save!(validate: false)
       rss_feed.rss_feed_urls = [rss_feed_url]
       rss_feed.save!

@@ -21,7 +21,7 @@ describe SaytSearch do
 
   context 'when affiliate_id and query are present' do
     let(:query) { 'foo' }
-    let(:search_params) { { affiliate_id: affiliate.id, locale: affiliate.locale, query: query, number_of_results: 10, extras: true } }
+    let(:search_params) { { affiliate_id: affiliate.id, locale: affiliate.locale, query: , number_of_results: 10, extras: true } }
     let(:search) { described_class.new(search_params) }
 
     it 'should correct query misspelling' do
@@ -43,7 +43,7 @@ describe SaytSearch do
     end
 
     context 'when the affiliate locale is set to es' do
-      let(:search_params) { { affiliate_id: es_affiliate.id, locale: es_affiliate.locale, query: query, number_of_results: 10, extras: true } }
+      let(:search_params) { { affiliate_id: es_affiliate.id, locale: es_affiliate.locale, query: , number_of_results: 10, extras: true } }
 
       it 'should return an array of Hash with Spanish translations' do
         expect(SaytSuggestion).to receive(:fetch_by_affiliate_id).with(es_affiliate.id, 'foo', 8).and_return(sayt_suggestions)

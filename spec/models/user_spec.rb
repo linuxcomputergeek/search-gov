@@ -208,7 +208,7 @@ describe User do
 
       it 'sets the approval status to approved' do
         emails.each do |email|
-          user = described_class.create!(valid_attributes.merge(email: email))
+          user = described_class.create!(valid_attributes.merge(email: ))
           expect(user.is_approved?).to be true
         end
       end
@@ -222,7 +222,7 @@ describe User do
 
       it 'sets the approval status to pending_approval' do
         emails.each do |email|
-          user = described_class.create!(valid_attributes.merge(email: email))
+          user = described_class.create!(valid_attributes.merge(email: ))
           expect(user.is_pending_approval?).to be true
         end
       end
@@ -236,7 +236,7 @@ describe User do
 
       it 'sets requires_manual_approval' do
         emails.each do |email|
-          user = described_class.create!(valid_attributes.merge(email: email))
+          user = described_class.create!(valid_attributes.merge(email: ))
           expect(user.requires_manual_approval?).to be true
         end
       end
@@ -244,7 +244,7 @@ describe User do
 
     it 'does not set requires_manual_approval if the user is an affiliate and the email is government_affiliated' do
       %w[aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL].each do |email|
-        user = described_class.create!(valid_attributes.merge(email: email))
+        user = described_class.create!(valid_attributes.merge(email: ))
         expect(user.requires_manual_approval?).to be false
       end
     end
@@ -300,7 +300,7 @@ describe User do
   describe '#has_government_affiliated_email?' do
     it 'returns true if the e-mail address ends with .gov or .mil' do
       %w[aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL].each do |email|
-        user = described_class.new(valid_attributes.merge({ email: email }))
+        user = described_class.new(valid_attributes.merge({ email:  }))
         expect(user).to have_government_affiliated_email
       end
     end
@@ -312,14 +312,14 @@ describe User do
 
     it 'returns true if the email address ends with state.*.us' do
       %w[user@co.franklin.state.dc.US user@state.dc.US].each do |email|
-        user = described_class.new(valid_attributes.merge({ email: email }))
+        user = described_class.new(valid_attributes.merge({ email:  }))
         expect(user).to be_has_government_affiliated_email
       end
     end
 
     it 'returns false if the e-mail adresses do not match' do
       %w[user@affiliate@corp.com user@FSRFED.us user@fs.fed.usa user@co.franklin.state.kids.us user@lincoln.k12.oh.us user@co.state.z.us].each do |email|
-        expect(described_class.new(valid_attributes.merge({ email: email }))).not_to be_has_government_affiliated_email
+        expect(described_class.new(valid_attributes.merge({ email:  }))).not_to be_has_government_affiliated_email
       end
     end
   end

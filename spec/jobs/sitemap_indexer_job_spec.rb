@@ -6,7 +6,7 @@ describe SitemapIndexerJob do
   let(:domain) { 'agency.gov' }
   let(:sitemap_url) { "https://#{domain}/sitemap.xml" }
   let(:args) do
-    { sitemap_url: sitemap_url, domain: domain }
+    { sitemap_url: , domain:  }
   end
   let(:indexer) { instance_double(SitemapIndexer) }
 

@@ -9,7 +9,7 @@ describe IndexedDocumentFetcherJob do
   end
 
   let(:affiliate) { affiliates(:basic_affiliate) }
-  let(:indexed_document) { IndexedDocument.create!(url: 'http://www.nps.gov/test.html', affiliate: affiliate, title: 'Document Title 1', description: 'This is a Document.') }
+  let(:indexed_document) { IndexedDocument.create!(url: 'http://www.nps.gov/test.html', affiliate: , title: 'Document Title 1', description: 'This is a Document.') }
 
   it_behaves_like 'a searchgov job'
 

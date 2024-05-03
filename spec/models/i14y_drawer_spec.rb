@@ -83,7 +83,7 @@ describe I14yDrawer do
       let(:response) do
         Hashie::Mash.new(status: 200,
                          developer_message: 'OK',
-                         collection: collection)
+                         collection: )
       end
 
       before do

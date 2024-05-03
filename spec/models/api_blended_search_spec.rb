@@ -4,10 +4,10 @@ describe ApiBlendedSearch do
   describe '#as_json' do
     subject(:search) do
       agency = Agency.create!({ name: 'Some New Agency', abbreviation: 'SNA' })
-      AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
+      AgencyOrganizationCode.create!(organization_code: 'XX00', agency: )
       allow(affiliate).to receive(:agency).and_return(agency)
 
-      described_class.new affiliate: affiliate,
+      described_class.new affiliate: ,
                           enable_highlighting: true,
                           limit: 20,
                           next_offset_within_limit: true,

@@ -29,7 +29,7 @@ describe OasisMrssNotification, '.perform' do
      'https://api.flickr.com/services/feeds/photos_public.gne?id=47838549@N08&lang=en-us&format=rss_200'].each do |url|
 
       it 'should not subscribe to Oasis' do
-        allow(RssFeedUrl).to receive(:find).and_return double(RssFeedUrl, url: url)
+        allow(RssFeedUrl).to receive(:find).and_return double(RssFeedUrl, url: )
         expect(described_class.perform(url)).to eq('URL does not look like an image URL')
       end
     end

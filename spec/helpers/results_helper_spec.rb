@@ -197,7 +197,7 @@ describe ResultsHelper do
     end
 
     let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:search) { instance_double('search', affiliate: affiliate) }
+    let(:search) { instance_double('search', affiliate: ) }
     let(:related) { '<strong>president</strong> inauguration' }
 
     it 'adds a related search with click tracking attributes' do

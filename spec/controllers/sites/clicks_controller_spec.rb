@@ -13,7 +13,7 @@ describe Sites::ClicksController do
 
       before do
         expect(RtuClicksRequest).to receive(:new).with(
-          site: site, filter_bots: current_user.sees_filtered_totals?,
+          site: , filter_bots: current_user.sees_filtered_totals?,
           start_date: Date.current.beginning_of_month, end_date: Date.current
         ).and_return rtu_clicks_request
         expect(rtu_clicks_request).to receive(:save)

@@ -8,7 +8,7 @@ describe OdieUrlSourceUpdateJob do
       IndexedDocument.create(title: "Indexed Document #{i}",
                              url: "https://www.uscis.gov/sites/default/files/#{i}.pdf",
                              source: 'rss',
-                             affiliate: affiliate)
+                             affiliate: )
     end
   end
 
@@ -17,7 +17,7 @@ describe OdieUrlSourceUpdateJob do
   describe '#perform' do
     let(:other_affiliate) { affiliates('bing_v7_affiliate') }
     let(:perform) do
-      subject.perform(affiliate: affiliate)
+      subject.perform(affiliate: )
     end
 
     it 'updates the rss source for that affiliate' do

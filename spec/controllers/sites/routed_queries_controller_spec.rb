@@ -51,7 +51,7 @@ describe Sites::RoutedQueriesController do
 
       let(:description) { 'My Routed Query' }
       let(:url) { 'https://www.usa.gov/free-money' }
-      let(:routed_query) { mock_model(RoutedQuery, description: description, url: url) }
+      let(:routed_query) { mock_model(RoutedQuery, description: , url: ) }
       let(:attrs) do
         {
           'description' => description,

@@ -9,7 +9,7 @@ describe ImageResultsPostProcessor do
       let(:results) do
         results = []
         thumbnail = Hashie::Mash::Rash.new(url: 'http://bar.gov/image.png')
-        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", url: "http://foo.gov/#{index}", thumbnail: thumbnail) }
+        5.times { |index| results << Hashie::Mash::Rash.new(title: "title #{index}", url: "http://foo.gov/#{index}", thumbnail: ) }
         results
       end
 

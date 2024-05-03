@@ -57,11 +57,11 @@ describe Sites::IndexedDocumentsController do
 
           expect(indexed_document).to receive(:save).and_return(true).at_least(:once)
 
-          post :create, params: params
+          post :create, params: 
         end
 
         it 'enqueues a indexed_document_fetcher_job to the searchgov queue' do
-          expect { post :create, params: params }.
+          expect { post :create, params:  }.
             to have_enqueued_job(IndexedDocumentFetcherJob).
             on_queue('searchgov').
             with(indexed_document_id: indexed_document.id)

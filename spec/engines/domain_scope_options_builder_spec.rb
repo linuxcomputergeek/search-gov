@@ -26,7 +26,7 @@ describe DomainScopeOptionsBuilder do
       let(:collection) { document_collections(:sample) }
 
       it 'uses the collection prefixes as the included domains' do
-        expect(described_class.build(site: affiliate, collection: collection)).to eq(
+        expect(described_class.build(site: affiliate, collection: )).to eq(
           { included_domains: ['www.something.gov/subfolder/'], excluded_domains: [], scope_ids: [], site_limits: nil }
         )
       end

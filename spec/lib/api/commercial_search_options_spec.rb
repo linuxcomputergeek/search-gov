@@ -13,7 +13,7 @@ describe Api::CommercialSearchOptions do
   end
 
   describe '#api_key' do
-    subject(:options) { described_class.new({ affiliate: :affiliate_name, api_key: api_key }) }
+    subject(:options) { described_class.new({ affiliate: :affiliate_name, api_key:  }) }
 
     let(:api_key) { :api_key }
     let(:affiliate) { nil }

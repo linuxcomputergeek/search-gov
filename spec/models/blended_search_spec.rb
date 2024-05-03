@@ -6,7 +6,7 @@ describe BlendedSearch do
   let(:affiliate) { affiliates(:usagov_affiliate) }
 
   let(:filterable_search_options) do
-    { affiliate: affiliate,
+    { affiliate: ,
       enable_highlighting: true,
       limit: 20,
       offset: 0,
@@ -40,7 +40,7 @@ describe BlendedSearch do
 
     context 'when search engine response contains spelling suggestion' do
       subject(:search) do
-        described_class.new affiliate: affiliate,
+        described_class.new affiliate: ,
                             enable_highlighting: true,
                             limit: 20,
                             offset: 0,
@@ -53,7 +53,7 @@ describe BlendedSearch do
           with(hash_including(q: 'electro coagulation')).
           and_return(double(ElasticBlendedResults,
                             results: [],
-                            suggestion: suggestion,
+                            suggestion: ,
                             total: 0))
 
         elastic_results = instance_double(ElasticBlendedResults,
@@ -82,7 +82,7 @@ describe BlendedSearch do
                           suggestion: nil,
                           total: 0))
 
-      described_class.new(affiliate: affiliate,
+      described_class.new(affiliate: ,
                           highlighting: false,
                           limit: 8,
                           next_offset_within_limit: true,

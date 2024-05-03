@@ -41,7 +41,7 @@ describe 'sites/sites/show' do
       let(:trending_urls) { %w[http://www.gov.gov/url1.html http://www.gov.gov/this/url/is/really/extremely/long/for/some/reason/url2.html] }
 
       before do
-        assign :dashboard, double('RtuDashboard', trending_urls: trending_urls).as_null_object
+        assign :dashboard, double('RtuDashboard', trending_urls: ).as_null_object
       end
 
       it 'should show them truncated in an ordered list without URL protocol' do
@@ -61,7 +61,7 @@ describe 'sites/sites/show' do
     context 'when no-result queries are available for today' do
       before do
         no_results = [QueryCount.new('nr1', 100), QueryCount.new('nr2', 50)]
-        assign :dashboard, double('RtuDashboard', no_results: no_results).as_null_object
+        assign :dashboard, double('RtuDashboard', no_results: ).as_null_object
       end
 
       it 'should show them in an ordered list' do
@@ -91,7 +91,7 @@ describe 'sites/sites/show' do
     context 'when top clicked URLs are available for today' do
       before do
         top_urls = {'http://www.gov.gov/clicked_url4.html' => 20, 'http://www.gov.gov/this/url/is/really/extremely/long/for/some/reason/clicked_url5.html' => 10}
-        assign :dashboard, double('RtuDashboard', top_urls: top_urls).as_null_object
+        assign :dashboard, double('RtuDashboard', top_urls: ).as_null_object
       end
 
       it 'should show them in an ordered list' do
@@ -114,7 +114,7 @@ describe 'sites/sites/show' do
     context 'when top clicked URLs are not available for today' do
       before do
         top_urls = {}
-        assign :dashboard, double('RtuDashboard', top_urls: top_urls).as_null_object
+        assign :dashboard, double('RtuDashboard', top_urls: ).as_null_object
       end
 
       it 'should say something about insufficient content' do
@@ -127,7 +127,7 @@ describe 'sites/sites/show' do
     context 'when top queries are available for today' do
       before do
         top_queries = [['jobs', 54, 53], ['economy', 55, 43], ['ebola', 53, 42]]
-        assign :dashboard, double('RtuDashboard', top_queries: top_queries).as_null_object
+        assign :dashboard, double('RtuDashboard', top_queries: ).as_null_object
       end
 
       context 'when user has sees_filtered_totals setting enabled' do
@@ -170,7 +170,7 @@ describe 'sites/sites/show' do
           ['rare', 2.000],
           ['never', 0]
         ]
-        assign :dashboard, double('RtuDashboard', low_ctr_queries: low_ctr_queries).as_null_object
+        assign :dashboard, double('RtuDashboard', low_ctr_queries: ).as_null_object
       end
 
       it 'should show them in an ordered list' do
@@ -201,7 +201,7 @@ describe 'sites/sites/show' do
     context 'when trending queries are available for today' do
       before do
         trending_queries = %w{obama jobs economy}
-        assign :dashboard, double('RtuDashboard', trending_queries: trending_queries).as_null_object
+        assign :dashboard, double('RtuDashboard', trending_queries: ).as_null_object
       end
 
       it 'should show them in an ordered list' do

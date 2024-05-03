@@ -93,7 +93,7 @@ describe Api::V2::SearchesController do
 
       it 'passes the correct options to its ApiI14ySearch object' do
         expect(assigns(:search_options).attributes).to include({ access_key: 'basic_key',
-                                                                 affiliate: affiliate,
+                                                                 affiliate: ,
                                                                  enable_highlighting: true,
                                                                  file_type: 'pdf',
                                                                  filter: '2',

@@ -5,7 +5,7 @@ describe SaytController, type: :request do
 
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:results) { double('results', to_json: 'some json string') }
-  let(:search) { double(SaytSearch, results: results) }
+  let(:search) { double(SaytSearch, results: ) }
 
   describe '#index' do
     context 'when sanitized query is empty' do

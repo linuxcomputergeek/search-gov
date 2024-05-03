@@ -12,7 +12,7 @@ describe SearchgovDomainIndexerJob do
   end
 
   let(:args) do
-    { searchgov_domain: searchgov_domain, delay: 10 }
+    { searchgov_domain: , delay: 10 }
   end
 
   it_behaves_like 'a searchgov job'
@@ -75,7 +75,7 @@ describe SearchgovDomainIndexerJob do
 
       it 'enqueues the next job after the specified delay' do
         expect{ perform }.to have_enqueued_job(described_class).
-          with(searchgov_domain: searchgov_domain, delay: 10).at(10.seconds.from_now)
+          with(searchgov_domain: , delay: 10).at(10.seconds.from_now)
       end
     end
 

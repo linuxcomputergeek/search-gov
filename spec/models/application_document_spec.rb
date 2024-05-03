@@ -8,7 +8,7 @@ describe ApplicationDocument do
   let(:valid_attributes) do
     {
       document: raw_document,
-      url: url
+      url: 
     }
   end
   let(:application_document) { described_class.new(**valid_attributes) }

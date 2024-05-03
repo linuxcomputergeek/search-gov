@@ -69,7 +69,7 @@ describe NewsItem do
           url: 'http://farm9.staticflickr.com/8381/8594929349_f6d8163c36_b.jpg', type: 'image/jpeg', height: '819', width: '1024'
         }
       }
-      news_item = described_class.create!(valid_attributes.merge(properties: properties))
+      news_item = described_class.create!(valid_attributes.merge(properties: ))
       expect(described_class.find(news_item.id).tags).to eq(%w[image])
     end
 

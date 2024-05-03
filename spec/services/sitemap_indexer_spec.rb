@@ -14,7 +14,7 @@ describe SitemapIndexer do
   end
   let(:indexer) do
     described_class.new(
-      sitemap_url: sitemap_url,
+      sitemap_url: ,
       domain: searchgov_domain.domain
     )
   end
@@ -98,7 +98,7 @@ describe SitemapIndexer do
     describe '#txt_sitemap?' do
       let(:domain) { 'repodb.net' }
       let(:sitemap_url) { 'http://repodb.net/sitemap.txt' }
-      let(:sitemap_indexer) { described_class.new(sitemap_url: sitemap_url, domain: domain) }
+      let(:sitemap_indexer) { described_class.new(sitemap_url: , domain: ) }
 
       context 'when the sitemap is a TXT format' do
         let(:txt_sitemap_content) { 'http://repodb.net/preface\nhttp://repodb.net/docs\n' }
@@ -119,11 +119,11 @@ describe SitemapIndexer do
 
       context 'when urls are extracted from sitemap' do
         let(:entry) { 'http://repodb.net/preface' }
-        let(:searchgov_domain) { SearchgovDomain.create(domain: domain) }
+        let(:searchgov_domain) { SearchgovDomain.create(domain: ) }
         let(:searchgov_url) { instance_double(SearchgovUrl) }
 
         before do
-          allow(SearchgovDomain).to receive(:find_by).with(domain: domain).and_return(searchgov_domain)
+          allow(SearchgovDomain).to receive(:find_by).with(domain: ).and_return(searchgov_domain)
           allow(SearchgovUrl).to receive(:find_or_initialize_by).and_return(searchgov_url)
           allow(sitemap_indexer).to receive(:sitemap_entries_stream).and_return([entry])
         end

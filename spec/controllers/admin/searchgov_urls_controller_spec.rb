@@ -10,9 +10,9 @@ describe Admin::SearchgovUrlsController do
   include_context 'super admin logged in' do
     describe '#fetch' do
       it 'enqueues a searchgov_url_fetcher_job to the searchgov queue' do
-        expect{ post :fetch, params: params }.
+        expect{ post :fetch, params:  }.
           to have_enqueued_job(SearchgovUrlFetcherJob).on_queue('searchgov').
-          with(searchgov_url: searchgov_url)
+          with(searchgov_url: )
       end
     end
   end

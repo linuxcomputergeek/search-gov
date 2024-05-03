@@ -10,7 +10,7 @@ describe NewsSearchHelper do
     let(:since) { nil }
     let(:until_time) { nil }
     let(:search) do
-      instance_double(NewsSearch, tbs: tbs, since: since, until: until_time)
+      instance_double(NewsSearch, tbs: , since: , until: until_time)
     end
 
     it { is_expected.to eq 'Any time' }

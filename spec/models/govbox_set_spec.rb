@@ -40,7 +40,7 @@ describe GovboxSet do
       end
 
       context 'when there is a graphic best bet' do
-        let(:graphic_best_bet) { FeaturedCollection.new(title: 'Search USA Blog', status: 'active', publish_start_on: '07/01/2011', affiliate: affiliate) }
+        let(:graphic_best_bet) { FeaturedCollection.new(title: 'Search USA Blog', status: 'active', publish_start_on: '07/01/2011', affiliate: ) }
         let(:elastic_featured_collection_results) { instance_double(ElasticFeaturedCollectionResults, total: 1, results: [graphic_best_bet]) }
 
         before do
@@ -182,7 +182,7 @@ describe GovboxSet do
           rss_feed_url.news_items.delete_all
 
           news_items = (1..2).map do |i|
-            NewsItem.new(rss_feed_url: rss_feed_url,
+            NewsItem.new(rss_feed_url: ,
                          link: "http://www.youtube.com/watch?v=#{i}&feature=youtube_gdata",
                          title: "video #{i}",
                          description: "video news description #{i}",

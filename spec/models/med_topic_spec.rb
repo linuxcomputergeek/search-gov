@@ -360,7 +360,7 @@ describe MedTopic do
     subject(:truncated_summary) { med_topic.truncated_summary }
 
     let(:summary_html) { '<h3>Lorem ipsum dolor sit amet.</h3>' }
-    let(:med_topic) { described_class.new(summary_html: summary_html) }
+    let(:med_topic) { described_class.new(summary_html: ) }
 
     it { is_expected.to eq 'Lorem ipsum dolor sit amet.' }
 

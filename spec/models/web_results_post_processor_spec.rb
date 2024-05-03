@@ -67,7 +67,7 @@ describe WebResultsPostProcessor do
       let(:processed_results) { post_processor.post_processed_results }
 
       before do
-        ExcludedUrl.create!(url: excluded_url, affiliate: affiliate)
+        ExcludedUrl.create!(url: excluded_url, affiliate: )
       end
 
       it 'should filter out the excluded URLs' do

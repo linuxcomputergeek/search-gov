@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe SearchgovDomain do
-  subject(:searchgov_domain) { described_class.new(domain: domain) }
+  subject(:searchgov_domain) { described_class.new(domain: ) }
 
   let(:domain) { 'searchgov.gov' }
 
@@ -70,7 +70,7 @@ describe SearchgovDomain do
 
       it 'is valid' do
         valid_domains.each do |domain|
-          expect(described_class.new(domain: domain)).to be_valid
+          expect(described_class.new(domain: )).to be_valid
         end
       end
     end
@@ -80,7 +80,7 @@ describe SearchgovDomain do
 
       it 'is invalid' do
         invalid_domains.each do |domain|
-          expect(described_class.new(domain: domain)).not_to be_valid
+          expect(described_class.new(domain: )).not_to be_valid
         end
       end
     end
@@ -102,7 +102,7 @@ describe SearchgovDomain do
     describe 'after create' do
       it 'enqueues a domain preparer job' do
         expect {
-          described_class.create!(domain: domain)
+          described_class.create!(domain: )
         }.to have_enqueued_job(SearchgovDomainPreparerJob)
       end
     end
@@ -110,7 +110,7 @@ describe SearchgovDomain do
 
   describe 'scopes' do
     describe 'by status' do
-      let!(:ok_domain) { described_class.create!(domain: domain, status: '200 ok') }
+      let!(:ok_domain) { described_class.create!(domain: , status: '200 ok') }
       let!(:not_ok_domain) do
         described_class.create!(domain: 'notok.gov', status: '403 Forbidden')
       end
@@ -145,7 +145,7 @@ describe SearchgovDomain do
   end
 
   describe 'counter columns' do
-    let(:searchgov_domain) { described_class.create(domain: domain) }
+    let(:searchgov_domain) { described_class.create(domain: ) }
 
     describe '#urls_count' do
       it 'tracks the number of associated searchgov url records' do
@@ -214,7 +214,7 @@ describe SearchgovDomain do
 
     it 'enqueues a SearchgovDomainIndexerJob with the record & crawl-delay' do
       expect(SearchgovDomainIndexerJob).
-        to receive(:perform_later).with(searchgov_domain: searchgov_domain, delay: 5)
+        to receive(:perform_later).with(searchgov_domain: , delay: 5)
       index_urls
     end
 
@@ -242,7 +242,7 @@ describe SearchgovDomain do
 
     it 'indexes the sitemaps' do
       expect(SitemapIndexerJob).to receive(:perform_later).
-        with(sitemap_url: 'https://searchgov.gov/sitemap.xml', domain: domain)
+        with(sitemap_url: 'https://searchgov.gov/sitemap.xml', domain: )
       index_sitemaps
     end
   end
@@ -251,7 +251,7 @@ describe SearchgovDomain do
     subject(:available) { searchgov_domain.available? }
 
     context 'when the status is null' do
-      let(:searchgov_domain) { described_class.new(domain: domain) }
+      let(:searchgov_domain) { described_class.new(domain: ) }
 
       it 'checks the status' do
         expect(searchgov_domain).to receive(:check_status)
@@ -260,13 +260,13 @@ describe SearchgovDomain do
     end
 
     context 'when the status is 200' do
-      let(:searchgov_domain) { described_class.new(domain: domain, status: '200 OK') }
+      let(:searchgov_domain) { described_class.new(domain: , status: '200 OK') }
 
       it { is_expected.to eq true }
     end
 
     context 'when the status indicates a problem' do
-      let(:searchgov_domain) { described_class.new(domain: domain, status: '403') }
+      let(:searchgov_domain) { described_class.new(domain: , status: '403') }
 
       it { is_expected.to eq false }
     end
@@ -275,7 +275,7 @@ describe SearchgovDomain do
   describe '#check_status' do
     subject(:check_status) { searchgov_domain.check_status }
 
-    let(:searchgov_domain) { described_class.create!(domain: domain) }
+    let(:searchgov_domain) { described_class.create!(domain: ) }
 
     context 'when the domain is available' do
       before { stub_request(:get, 'https://searchgov.gov').to_return(status: 200) }

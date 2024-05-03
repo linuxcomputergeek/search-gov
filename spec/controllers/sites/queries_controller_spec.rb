@@ -13,7 +13,7 @@ describe Sites::QueriesController do
 
       before do
         expect(RtuQueriesRequest).to receive(:new).with(
-          site: site, filter_bots: current_user.sees_filtered_totals?,
+          site: , filter_bots: current_user.sees_filtered_totals?,
           start_date: Date.current.beginning_of_month, end_date: Date.current
         ).and_return rtu_queries_request
         expect(rtu_queries_request).to receive(:save)

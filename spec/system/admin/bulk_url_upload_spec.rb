@@ -56,7 +56,7 @@ describe 'Bulk URL upload' do
         do_bulk_upload
 
         urls.each do |url|
-          expect(SearchgovUrl.find_by(url: url)).not_to be_blank
+          expect(SearchgovUrl.find_by(url: )).not_to be_blank
         end
       end
 

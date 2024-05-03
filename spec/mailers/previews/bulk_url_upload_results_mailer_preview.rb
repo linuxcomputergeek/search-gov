@@ -8,7 +8,7 @@ class BulkUrlUploadResultsMailerPreview < ActionMailer::Preview
     results.add_ok(SearchgovUrl.create(url: 'https://ok-url.test'))
     results.add_ok(SearchgovUrl.create(url: 'https://another-ok-url.test'))
 
-    BulkUrlUploadResultsMailer.with(user: user, results: results).results_email
+    BulkUrlUploadResultsMailer.with(user: , results: ).results_email
   end
 
   def results_email_with_errors
@@ -20,6 +20,6 @@ class BulkUrlUploadResultsMailerPreview < ActionMailer::Preview
     results.add_error('one error', 'https://realy-bogus.test')
     results.add_error('another error', 'https://left-field.test')
 
-    BulkUrlUploadResultsMailer.with(user: user, results: results).results_email
+    BulkUrlUploadResultsMailer.with(user: , results: ).results_email
   end
 end

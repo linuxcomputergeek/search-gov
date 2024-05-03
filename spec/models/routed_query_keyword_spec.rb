@@ -16,7 +16,7 @@ describe RoutedQueryKeyword do
 
     it 'downcases, squish and strip whitespace from keyword before inserting in DB' do
       keyword = ' leading          and trailing whitespaces AND CAPITALS'
-      rqk = routed_query.routed_query_keywords.create!(keyword: keyword)
+      rqk = routed_query.routed_query_keywords.create!(keyword: )
       expect(rqk.keyword).to eq('leading and trailing whitespaces and capitals')
     end
 

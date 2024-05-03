@@ -21,7 +21,7 @@ describe Misspelling do
     it 'should strip whitespace from wrong/rite before inserting in DB' do
       wrong = ' leadingandtraleingwhitespaces '
       rite = ' leading and trailing whitespaces '
-      misspelling = described_class.create!(wrong: wrong, rite: rite)
+      misspelling = described_class.create!(wrong: , rite: )
       expect(misspelling.wrong).to eq(wrong.strip)
       expect(misspelling.rite).to eq(rite.strip)
     end
@@ -35,7 +35,7 @@ describe Misspelling do
     it 'should squish multiple whitespaces between words in rite before entering into DB' do
       wrong = 'twospayces'
       rite = 'two  spaces'
-      misspelling = described_class.create!(wrong: wrong, rite: rite)
+      misspelling = described_class.create!(wrong: , rite: )
       expect(misspelling.wrong).to eq('twospayces')
       expect(misspelling.rite).to eq('two spaces')
     end

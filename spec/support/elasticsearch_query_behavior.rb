@@ -7,7 +7,7 @@ shared_examples_for 'an Elasticsearch query' do |index|
     # Sanity-check to confirm that the query structure is valid
     it 'does not raise an error' do
       expect do
-        Es::ELK.client_reader.search(index: index, body: body)
+        Es::ELK.client_reader.search(index: , body: )
       end.not_to raise_error
     end
 

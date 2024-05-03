@@ -54,18 +54,18 @@ describe SaytSuggestion do
     end
 
     it 'downcases the phrase before entering into DB' do
-      described_class.create!(phrase: 'ALL CAPS', affiliate: affiliate)
+      described_class.create!(phrase: 'ALL CAPS', affiliate: )
       expect(described_class.find_by(phrase: 'all caps').phrase).to eq('all caps')
     end
 
     it 'strips whitespace from phrase before inserting in DB' do
       phrase = ' leading and trailing whitespaces '
-      sf = described_class.create!(phrase: phrase, affiliate: affiliate)
+      sf = described_class.create!(phrase: phrase, affiliate: )
       expect(sf.phrase).to eq(phrase.strip)
     end
 
     it 'squishes multiple whitespaces between words in the phrase before entering into DB' do
-      described_class.create!(phrase: 'two  spaces', affiliate: affiliate)
+      described_class.create!(phrase: 'two  spaces', affiliate: )
       expect(described_class.find_by(phrase: 'two spaces').phrase).to eq('two spaces')
     end
 
@@ -75,22 +75,22 @@ describe SaytSuggestion do
     end
 
     it 'defaults popularity to 1 if not specified' do
-      described_class.create!(phrase: 'popular', affiliate: affiliate)
+      described_class.create!(phrase: 'popular', affiliate: )
       expect(described_class.find_by(phrase: 'popular').popularity).to eq(1)
     end
 
     it 'defaults protected status to false' do
-      suggestion = described_class.create!(phrase: 'unprotected', affiliate: affiliate)
+      suggestion = described_class.create!(phrase: 'unprotected', affiliate: )
       expect(suggestion.is_protected).to be false
     end
 
     it 'does not create a new suggestion if one exists, but is marked as deleted' do
       described_class.create!(
         phrase: 'deleted',
-        affiliate: affiliate,
+        affiliate: ,
         deleted_at: Time.current
       )
-      expect(described_class.create(phrase: 'deleted', affiliate: affiliate).id).to be_nil
+      expect(described_class.create(phrase: 'deleted', affiliate: ).id).to be_nil
     end
   end
 
@@ -106,11 +106,11 @@ describe SaytSuggestion do
 
     it 'sets the is_whitelisted flag accordingly' do
       ss = described_class.create!(
-        phrase: 'accept me please', affiliate: affiliate, deleted_at: Time.current
+        phrase: 'accept me please', affiliate: , deleted_at: Time.current
       )
       expect(ss.is_whitelisted).to be true
       ss = described_class.create!(
-        phrase: 'not me please', affiliate: affiliate, deleted_at: Time.current
+        phrase: 'not me please', affiliate: , deleted_at: Time.current
       )
       expect(ss.is_whitelisted).to be false
     end
@@ -237,8 +237,8 @@ describe SaytSuggestion do
     it 'creates SAYT suggestions using the affiliate provided, if provided' do
       phrases.each do |phrase|
         expect(described_class).to receive(:create).with(
-          phrase: phrase,
-          affiliate: affiliate,
+          phrase: ,
+          affiliate: ,
           is_protected: true,
           popularity: SaytSuggestion::MAX_POPULARITY
         ).and_return dummy_suggestion
@@ -251,7 +251,7 @@ describe SaytSuggestion do
     subject(:to_label) { suggestion.to_label }
 
     let(:suggestion) do
-      described_class.new(phrase: 'dummy suggestion', affiliate: affiliate)
+      described_class.new(phrase: 'dummy suggestion', affiliate: )
     end
 
     it 'returns the phrase' do

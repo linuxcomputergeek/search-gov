@@ -8,12 +8,12 @@ describe CustomFontAndColorThemeUpdater do
                           display_name: "Default Visual Design #{i}",
                           visual_design_json: default_visual_design,
                           theme: 'custom',
-                          css_property_hash: css_property_hash)
+                          css_property_hash: )
         Affiliate.create!(name: "modified_visual_design_#{i}",
                           display_name: "Modified Visual Design #{i}",
                           visual_design_json: modified_visual_design,
                           theme: 'custom',
-                          css_property_hash: css_property_hash)
+                          css_property_hash: )
       end
       allow(Rails.logger).to receive(:info)
       allow(Rails.logger).to receive(:error)

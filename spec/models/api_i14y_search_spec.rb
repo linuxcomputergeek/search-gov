@@ -13,12 +13,12 @@ describe ApiI14ySearch do
       AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
       allow(affiliate).to receive(:agency).and_return(agency)
 
-      described_class.new affiliate: affiliate,
+      described_class.new affiliate: ,
                           enable_highlighting: highlight,
                           limit: 20,
                           next_offset_within_limit: next_offset,
                           offset: 0,
-                          query: query
+                          query: 
     end
 
     let(:query) { 'marketplase' }

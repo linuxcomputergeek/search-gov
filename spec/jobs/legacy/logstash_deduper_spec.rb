@@ -27,7 +27,7 @@ describe LogstashDeduper do
         allow(Es::ELK.client_reader).to receive(:search).
           with(search_args).and_return cursor
         allow(Es::ELK.client_reader).to receive(:scroll).
-          with(scroll_id: scroll_id, scroll: '5m').
+          with(scroll_id: , scroll: '5m').
           and_return(scroll_1, scroll_2, scroll_3)
       end
 

@@ -9,13 +9,13 @@ describe I14yFormattedQuery do
     let(:excluded_domains) { %w(excluded1.gov excluded2.gov) }
 
     context 'when included domains are present' do
-      let(:options) { { included_domains: included_domains } }
+      let(:options) { { included_domains:  } }
 
       it { is_expected.to eq 'rutabaga site:included2.gov site:included1.gov' }
     end
 
     context 'when excluded domains are present' do
-      let(:options) { { excluded_domains: excluded_domains } }
+      let(:options) { { excluded_domains:  } }
 
       it { is_expected.to eq 'rutabaga -site:excluded2.gov -site:excluded1.gov' }
 
@@ -28,7 +28,7 @@ describe I14yFormattedQuery do
 
     context 'when both included and excluded domains are present' do
       let(:options) do
-        { included_domains: included_domains, excluded_domains: excluded_domains }
+        { included_domains: , excluded_domains:  }
       end
 
       it { is_expected.to eq 'rutabaga -site:excluded2.gov -site:excluded1.gov site:included2.gov site:included1.gov' }

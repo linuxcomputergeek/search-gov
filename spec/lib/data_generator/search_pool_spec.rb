@@ -10,7 +10,7 @@ module DataGenerator
     let(:modules) { ['NEWS', 'IMAG', 'JOBS'] }
     let(:fake) do
       double('Fake', {
-        timestamp: timestamp,
+        timestamp: ,
         is_human?: true,
         modules: ['NEWS', 'IMAG', 'JOBS'],
         search_query: 'the ants in france',

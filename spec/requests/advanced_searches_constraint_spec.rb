@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe AdvancedSearchesConstraint do
-  before { get '/search/advanced', params: { affiliate: affiliate } }
+  before { get '/search/advanced', params: { affiliate:  } }
 
   context 'when a SearchGov site' do
     let(:affiliate) { affiliates(:searchgov_affiliate).name }

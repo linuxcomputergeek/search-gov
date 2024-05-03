@@ -19,7 +19,7 @@ describe Sites::AutodiscoveriesController do
           expect(SiteAutodiscoverer).to receive(:new).with(site, autodiscovery_url).and_return site_autodiscoverer
           expect(site_autodiscoverer).to receive(:run)
           allow(site_autodiscoverer).to receive(:discovered_resources)
-          post :create, params: { site_id: site.id, autodiscovery_url: autodiscovery_url }
+          post :create, params: { site_id: site.id, autodiscovery_url:  }
         end
 
         it { is_expected.to redirect_to(site_content_path(site)) }
@@ -34,7 +34,7 @@ describe Sites::AutodiscoveriesController do
 
         before do
           expect(SiteAutodiscoverer).to receive(:new).with(site, autodiscovery_url).and_raise URI::InvalidURIError
-          post :create, params: { site_id: site.id, autodiscovery_url: autodiscovery_url }
+          post :create, params: { site_id: site.id, autodiscovery_url:  }
         end
 
         it { is_expected.to redirect_to(site_content_path(site)) }

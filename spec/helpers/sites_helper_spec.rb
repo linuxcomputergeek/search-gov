@@ -44,7 +44,7 @@ describe SitesHelper do
 
   describe '#user_row_css_class_hash' do
     let(:approval_status) { RSpec.current_example.metadata[:approval_status] }
-    let(:user) { mock_model(User, approval_status: approval_status) }
+    let(:user) { mock_model(User, approval_status: ) }
     let(:subject) { helper.user_row_css_class_hash(user) }
 
     context 'when User has', approval_status: 'pending_approval' do

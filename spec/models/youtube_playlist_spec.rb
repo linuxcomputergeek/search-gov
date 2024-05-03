@@ -27,7 +27,7 @@ describe YoutubePlaylist do
       let(:news_item_ids) { 'not an array' }
 
       it 'raises an error' do
-        expect { described_class.new(news_item_ids: news_item_ids) }.
+        expect { described_class.new(news_item_ids: ) }.
           to raise_error(ActiveRecord::SerializationTypeMismatch)
       end
     end

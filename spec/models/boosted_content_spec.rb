@@ -4,7 +4,7 @@ describe BoostedContent do
   fixtures :affiliates, :languages
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:valid_attributes) do
-    { affiliate: affiliate,
+    { affiliate: ,
       url: 'http://www.someaffiliate.gov/foobar',
       title: 'The foobar page',
       description: 'All about foobar, boosted to the top',
@@ -188,7 +188,7 @@ describe BoostedContent do
     before do
       affiliate = Affiliate.create!(display_name: 'Test Affiliate',
                                     name: 'test_affiliate')
-      described_class.create(valid_attributes.merge(affiliate: affiliate))
+      described_class.create(valid_attributes.merge(affiliate: ))
       affiliate.destroy
     end
 

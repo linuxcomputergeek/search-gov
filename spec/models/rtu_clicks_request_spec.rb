@@ -9,7 +9,7 @@ describe RtuClicksRequest do
 
   before do
     allow(RtuDateRange).to receive(:new).and_return double(RtuDateRange, available_dates_range: (Date.yesterday..Date.current))
-    allow(RtuTopClicks).to receive(:new).and_return double(RtuTopClicks, top_n: top_n)
+    allow(RtuTopClicks).to receive(:new).and_return double(RtuTopClicks, top_n: )
   end
 
   describe '#save' do

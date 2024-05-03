@@ -7,11 +7,11 @@ describe I14ySearch do
   let(:highlighting) { true }
   let(:query) { 'marketplase' }
   let(:filterable_search_options) do
-    { affiliate: affiliate,
+    { affiliate: ,
       enable_highlighting: highlighting,
       limit: 20,
       offset: 0,
-      query: query }
+      query:  }
   end
 
   describe '#initialize' do

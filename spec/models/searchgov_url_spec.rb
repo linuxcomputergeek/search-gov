@@ -5,7 +5,7 @@ require 'spec_helper'
 describe SearchgovUrl do
   let(:url) { 'https://www.agency.gov/boring.html' }
   let(:html) { read_fixture_file('/html/page_with_og_metadata.html') }
-  let(:valid_attributes) { { url: url } }
+  let(:valid_attributes) { { url:  } }
   let(:searchgov_url) { described_class.new(valid_attributes) }
 
   it { is_expected.to have_readonly_attribute(:hashed_url) }
@@ -267,7 +267,7 @@ describe SearchgovUrl do
         end
 
         context 'when the record includes a lastmod value' do
-          let(:valid_attributes) { { url: url, lastmod: '2018-01-01' } }
+          let(:valid_attributes) { { url: , lastmod: '2018-01-01' } }
 
           it 'passes that as the changed value' do
             expect(I14yDocument).to receive(:create).
@@ -281,7 +281,7 @@ describe SearchgovUrl do
                 to receive(:modified).and_return('2018-03-30T01:00:00-04:00')
             end
 
-            let(:valid_attributes) { { url: url, lastmod: '2018-01-01' } }
+            let(:valid_attributes) { { url: , lastmod: '2018-01-01' } }
 
             it 'passes whichever value is more recent' do
               expect(I14yDocument).to receive(:create).

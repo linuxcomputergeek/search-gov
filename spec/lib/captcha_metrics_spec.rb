@@ -5,7 +5,7 @@ describe CaptchaMetrics do
 
   let(:statsd) { double(Datadog::Statsd, increment: nil) }
   let(:headers) { { 'HTTP_X_BON_REASON' => reason_header } }
-  let(:request) { double(:request, headers: headers) }
+  let(:request) { double(:request, headers: ) }
   let(:reason_header) { :stale_cookie }
 
   before do

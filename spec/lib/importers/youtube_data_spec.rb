@@ -123,7 +123,7 @@ describe YoutubeData do
 
     before do
       %w[playlist_1 playlist_2 obsolete_playlist].each do |playlist_id|
-        profile.youtube_playlists.create!(playlist_id: playlist_id)
+        profile.youtube_playlists.create!(playlist_id: )
       end
 
       allow(YoutubeAdapter).to receive(:get_playlist_ids).

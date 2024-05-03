@@ -6,7 +6,7 @@ describe HtmlDocument do
   let(:raw_document) { read_fixture_file('/html/page_with_metadata.html') }
   let(:url) { 'https://foo.gov/bar.html' }
   let(:valid_attributes) do
-    { document: raw_document, url: url }
+    { document: raw_document, url:  }
   end
   let(:doc_with_dc_data) { read_fixture_file('/html/page_with_dc_metadata.html') }
 

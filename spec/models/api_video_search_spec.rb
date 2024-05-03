@@ -8,7 +8,7 @@ describe ApiVideoSearch do
       before { expect(affiliate).to receive(:youtube_profile_ids).and_return([]) }
 
       it 'returns nil' do
-        search = described_class.new(affiliate: affiliate, query: 'my video')
+        search = described_class.new(affiliate: , query: 'my video')
         expect(search.search).to be_nil
       end
     end
@@ -18,7 +18,7 @@ describe ApiVideoSearch do
     context 'when the site has youtube_profiles' do
       let(:youtube_profile_rss_feeds) { double('YoutubeProfile RssFeeds') }
       let(:search_options) do
-        { affiliate: affiliate,
+        { affiliate: ,
           enable_highlighting: false,
           offset: 23,
           pre_tags: ["\ue000"],
@@ -50,7 +50,7 @@ describe ApiVideoSearch do
 
       it 'handles response' do
         results = [double('result 1')]
-        response = double('response', results: results, total: 100)
+        response = double('response', results: , total: 100)
         expect(ElasticNewsItem).to receive(:search_for).and_return(response)
         search = described_class.new(
           search_options.merge(next_offset_within_limit: true)
@@ -88,7 +88,7 @@ describe ApiVideoSearch do
     let(:current_time) { DateTime.parse 'Wed, 17 Dec 2014 18:33:43 +0000' }
 
     let(:search) do
-      described_class.new(affiliate: affiliate,
+      described_class.new(affiliate: ,
                           limit: 2,
                           next_offset_within_limit: true,
                           offset: 23,
@@ -103,7 +103,7 @@ describe ApiVideoSearch do
       rss_feed_url.news_items.delete_all
 
       news_items = (1..2).map do |i|
-        NewsItem.create!(rss_feed_url: rss_feed_url,
+        NewsItem.create!(rss_feed_url: ,
                          link: "http://www.youtube.com/watch?v=#{i}&feature=youtube_gdata",
                          title: "video #{i}",
                          description: "video news description #{i}",

@@ -116,7 +116,7 @@ describe I14yPostProcessor do
     context 'when there is a match in the description' do
       let(:results) do
         [Hashie::Mash.new(result.merge(description: "description with \uE000match\uE001",
-                                       content: content))]
+                                       content: ))]
       end
 
       context 'when there is no match in the body' do

@@ -2,7 +2,7 @@
 
 describe SearchgovCrawler do
   let(:options) do
-    { domain: domain, srsly: true }
+    { domain: , srsly: true }
   end
   let(:crawler) { described_class.new(**options) }
   let(:domain) { 'www.agency.gov' }
@@ -89,7 +89,7 @@ describe SearchgovCrawler do
       end
 
       context 'when srsly is false' do
-        let(:options) { { domain: domain, srsly: false  } }
+        let(:options) { { domain: , srsly: false  } }
 
         it 'does not create searchgov urls' do
           expect(SearchgovUrl).not_to receive(:create)
@@ -199,7 +199,7 @@ describe SearchgovCrawler do
 
         it 'does not create searchgov urls' do
           crawl
-          expect(SearchgovUrl).not_to receive(:create).with(url: url)
+          expect(SearchgovUrl).not_to receive(:create).with(url: )
         end
       end
 
@@ -227,7 +227,7 @@ describe SearchgovCrawler do
         end
 
         context 'when srsly is false' do
-          let(:options) { { domain: domain, srsly: false  } }
+          let(:options) { { domain: , srsly: false  } }
 
           describe '#url_file' do
             it 'contains the crawled links' do
@@ -273,7 +273,7 @@ describe SearchgovCrawler do
             let(:link) { 'admin/foo?bar.pdf' }
 
             it 'does not create a searchgov url' do
-              expect(SearchgovUrl).not_to receive(:create).with(url: url)
+              expect(SearchgovUrl).not_to receive(:create).with(url: )
               crawl
             end
           end
@@ -309,7 +309,7 @@ describe SearchgovCrawler do
           let(:new_url) { 'http://www.external.gov/external' }
 
           it "doesn't log the redirected link" do
-            allow(SearchgovUrl).to receive(:create).with(url: url)
+            allow(SearchgovUrl).to receive(:create).with(url: )
             expect(SearchgovUrl).not_to receive(:create).with(url: new_url)
             crawl
           end

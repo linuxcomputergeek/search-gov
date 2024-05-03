@@ -7,7 +7,7 @@ describe ApiClick do
     described_class.new(url: 'http://www.fda.gov/foo.html',
                         query: 'my query',
                         client_ip: '0.0.0.0',
-                        affiliate: affiliate,
+                        affiliate: ,
                         position: '7',
                         module_code: 'BWEB',
                         vertical: 'web',

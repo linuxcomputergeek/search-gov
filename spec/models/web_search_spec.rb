@@ -3,7 +3,7 @@
 describe WebSearch do
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:valid_options) do
-    { query: 'government', affiliate: affiliate }
+    { query: 'government', affiliate:  }
   end
 
   describe '.new' do
@@ -18,7 +18,7 @@ describe WebSearch do
     end
 
     it 'does not require a query' do
-      expect { described_class.new(affiliate: affiliate) }.not_to raise_error
+      expect { described_class.new(affiliate: ) }.not_to raise_error
     end
 
     it 'ignores invalid params' do
@@ -34,14 +34,14 @@ describe WebSearch do
     it 'sets matching site limits' do
       affiliate.site_domains.create!(domain: 'foo.com')
       affiliate.site_domains.create!(domain: 'bar.gov')
-      search = described_class.new(query: 'government', affiliate: affiliate, site_limits: 'foo.com/subdir1 foo.com/subdir2 include3.gov')
+      search = described_class.new(query: 'government', affiliate: , site_limits: 'foo.com/subdir1 foo.com/subdir2 include3.gov')
       expect(search.matching_site_limits).to eq(%w[foo.com/subdir1 foo.com/subdir2])
     end
   end
 
   describe '#cache_key' do
     let(:valid_options) do
-      { query: 'government', affiliate: affiliate, page: 5 }
+      { query: 'government', affiliate: , page: 5 }
     end
 
     it 'outputs a key based on the query, options (including affiliate id), and search engine parameters' do
@@ -53,7 +53,7 @@ describe WebSearch do
     context 'when BingV7 is the engine' do
       before do
         affiliate.search_engine = 'BingV7'
-        valid_options = { query: 'government', affiliate: affiliate }
+        valid_options = { query: 'government', affiliate:  }
         bing_search = BingV7WebSearch.new(valid_options)
         allow(BingV7WebSearch).to receive(:new).and_return bing_search
         allow(bing_search).to receive(:execute_query)
@@ -71,7 +71,7 @@ describe WebSearch do
   describe '#run' do
     context 'when searching with a blacklisted query term' do
       let(:search) do
-        described_class.new(query: Search::BLACKLISTED_QUERIES.sample, affiliate: affiliate)
+        described_class.new(query: Search::BLACKLISTED_QUERIES.sample, affiliate: )
       end
 
       it 'returns false when searching' do
@@ -91,7 +91,7 @@ describe WebSearch do
 
     context 'when searching with really long queries' do
       let(:search) do
-        described_class.new(query: 'X' * (Search::MAX_QUERYTERM_LENGTH + 1), affiliate: affiliate)
+        described_class.new(query: 'X' * (Search::MAX_QUERYTERM_LENGTH + 1), affiliate: )
       end
 
       it 'returns false when searching' do
@@ -113,13 +113,13 @@ describe WebSearch do
       let(:affiliate) { affiliates(:basic_affiliate) }
 
       it 'defaults to page 1 if no valid page number was specified' do
-        expect(described_class.new(query: 'government', affiliate: affiliate).page).to eq(Pageable::DEFAULT_PAGE)
-        expect(described_class.new(query: 'government', affiliate: affiliate, page: '').page).to eq(Pageable::DEFAULT_PAGE)
-        expect(described_class.new(query: 'government', affiliate: affiliate, page: 'string').page).to eq(Pageable::DEFAULT_PAGE)
+        expect(described_class.new(query: 'government', affiliate: ).page).to eq(Pageable::DEFAULT_PAGE)
+        expect(described_class.new(query: 'government', affiliate: , page: '').page).to eq(Pageable::DEFAULT_PAGE)
+        expect(described_class.new(query: 'government', affiliate: , page: 'string').page).to eq(Pageable::DEFAULT_PAGE)
       end
 
       it 'sets the page number' do
-        search = described_class.new(query: 'government', affiliate: affiliate, page: 2)
+        search = described_class.new(query: 'government', affiliate: , page: 2)
         expect(search.page).to eq(2)
       end
     end
@@ -160,7 +160,7 @@ describe WebSearch do
       subject(:search) do
         affiliate = affiliates(:usagov_affiliate)
         affiliate.search_engine = 'BingV7'
-        described_class.new(query: 'english', affiliate: affiliate)
+        described_class.new(query: 'english', affiliate: )
       end
 
       it 'assigns BWEB as the module_tag' do
@@ -252,7 +252,7 @@ describe WebSearch do
 
     describe 'ODIE backfill' do
       context 'when we want X Bing results from page Y and there are X of them' do
-        let(:search) { described_class.new(query: 'english', affiliate: affiliate) }
+        let(:search) { described_class.new(query: 'english', affiliate: ) }
 
         before do
           search.run
@@ -268,7 +268,7 @@ describe WebSearch do
 
       context 'when we want X Bing results from page Y and there are 0 <= n < X of them' do
         let(:search) do
-          described_class.new(query: 'odie backfill', affiliate: affiliate, page: page)
+          described_class.new(query: 'odie backfill', affiliate: , page: )
         end
         let(:page) { 1 }
 
@@ -351,7 +351,7 @@ describe WebSearch do
       let(:affiliate) do
         Affiliate.create!(name: 'nasa', display_name: 'Nasa', search_engine: 'BingV7')
       end
-      let(:search) { described_class.new(affiliate: affiliate, query: query) }
+      let(:search) { described_class.new(affiliate: , query: ) }
 
       before do
         affiliate.site_domains.create!(domain: included_domain)
@@ -417,7 +417,7 @@ describe WebSearch do
 
   describe '#as_json' do
     let(:affiliate) { affiliates(:non_existent_affiliate) }
-    let(:search) { described_class.new(query: 'english', affiliate: affiliate) }
+    let(:search) { described_class.new(query: 'english', affiliate: ) }
 
     it 'generates a JSON representation of total, start and end records, and search results' do
       search.run
@@ -523,7 +523,7 @@ describe WebSearch do
 
   describe '#to_xml' do
     let(:affiliate) { affiliates(:non_existent_affiliate) }
-    let(:search) { described_class.new(query: 'english', affiliate: affiliate) }
+    let(:search) { described_class.new(query: 'english', affiliate: ) }
 
     it 'generates a XML representation of total, start and end records, and search results' do
       search.run
@@ -556,7 +556,7 @@ describe WebSearch do
   end
 
   describe 'has_fresh_news_items?' do
-    let(:search) { described_class.new(query: 'english', affiliate: affiliate) }
+    let(:search) { described_class.new(query: 'english', affiliate: ) }
 
     context 'when 1 or more news items are less than 6 days old' do
       let(:news_item_results) do

@@ -3,7 +3,7 @@
 describe OdieImageSearch do
   let(:affiliate) { affiliates(:basic_affiliate) }
   let(:query) { 'obama' }
-  let(:image_search) { described_class.new(query: query, affiliate: affiliate) }
+  let(:image_search) { described_class.new(query: , affiliate: ) }
   let(:search_engine_response) do
     SearchEngineResponse.new do |search_response|
       search_response.total = 2
@@ -51,7 +51,7 @@ describe OdieImageSearch do
 
   describe '.cache_key' do
     it 'outputs a key based on the query, affiliate id, and page parameters' do
-      expect(described_class.new(query: 'element', affiliate: affiliate, page: 4).cache_key).to eq("oasis_image:element:#{affiliate.id}:4:20")
+      expect(described_class.new(query: 'element', affiliate: , page: 4).cache_key).to eq("oasis_image:element:#{affiliate.id}:4:20")
     end
   end
 
@@ -64,7 +64,7 @@ describe OdieImageSearch do
 
       it 'creates an OasisSearch with the MRSS feed names' do
         allow(OasisSearch).to receive(:new)
-        described_class.new(query: 'element', affiliate: affiliate)
+        described_class.new(query: 'element', affiliate: )
         expect(OasisSearch).to have_received(:new).with(query: 'element',
                                                         per_page: 20,
                                                         offset: 0,

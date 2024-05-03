@@ -12,7 +12,7 @@ describe HelpDocsController do
 
       before do
         expect(HelpDoc).to receive(:extract_article).with(url).and_return 'Site Information'
-        get :show, params: { url: url }, format: :json
+        get :show, params: { url:  }, format: :json
       end
 
       it { respond_with :success }
@@ -24,7 +24,7 @@ describe HelpDocsController do
 
       before do
         expect(HelpDoc).not_to receive(:extract_article)
-        get :show, params: { url: url }, format: :json
+        get :show, params: { url:  }, format: :json
       end
 
       it { is_expected.to redirect_to('https://www.usa.gov/search-error') }
@@ -37,7 +37,7 @@ describe HelpDocsController do
 
       before do
         expect(HelpDoc).not_to receive(:extract_article)
-        get :show, params: { url: url }, format: :json
+        get :show, params: { url:  }, format: :json
       end
       it { is_expected.to redirect_to('https://www.usa.gov/search-error') }
     end
@@ -45,7 +45,7 @@ describe HelpDocsController do
     context 'when user is not logged in' do
       let(:url) { 'https://search.gov/manual/site-information.html' }
 
-      before { get :show, params: { url: url }, format: :json }
+      before { get :show, params: { url:  }, format: :json }
 
       it { respond_with :bad_request }
     end

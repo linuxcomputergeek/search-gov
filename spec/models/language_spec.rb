@@ -9,10 +9,10 @@ describe Language do
     subject(:get_market) { described_class.bing_market_for_code(code) }
 
     let(:code) { 'tlh' }
-    let(:language) { mock_model(described_class, inferred_country_code: inferred_country_code) }
+    let(:language) { mock_model(described_class, inferred_country_code: ) }
     let(:inferred_country_code) { 'Undiscovered' }
 
-    before { allow(described_class).to receive(:find_by).with(code: code).and_return(language) }
+    before { allow(described_class).to receive(:find_by).with(code: ).and_return(language) }
 
     context 'when no language corresponds to the given code' do
       let(:language) { nil }

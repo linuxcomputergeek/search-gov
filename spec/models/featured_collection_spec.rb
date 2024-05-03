@@ -7,7 +7,7 @@ describe FeaturedCollection do
   end
   let(:affiliate) { affiliates(:usagov_affiliate) }
   let(:valid_attributes) do
-    { affiliate: affiliate, title: 'my fc', status: 'active', publish_start_on: Date.today }
+    { affiliate: , title: 'my fc', status: 'active', publish_start_on: Date.today }
   end
 
   describe 'validations' do
@@ -135,7 +135,7 @@ describe FeaturedCollection do
     let(:image) { double('image') }
 
     let(:featured_collection) do
-      affiliate.featured_collections.create!(affiliate: affiliate,
+      affiliate.featured_collections.create!(affiliate: ,
                                              title: 'My awesome featured collection',
                                              status: 'active',
                                              publish_start_on: Date.current,
@@ -276,7 +276,7 @@ describe FeaturedCollection do
       it 'contains image_url' do
         image = File.new(Rails.root.join('features/support/small.jpg'), 'r')
         fc_attributes = {
-          image: image,
+          image: ,
           title: 'My awesome featured collection',
           title_url: 'http://www.dotgov.gov/page.html',
           status: 'active',
@@ -326,7 +326,7 @@ describe FeaturedCollection do
 
   describe '#image' do
     let(:image) { File.open(Rails.root.join('spec/fixtures/images/corgi.jpg')) }
-    let(:fc) { described_class.create({ image: image }.merge(valid_attributes)) }
+    let(:fc) { described_class.create({ image:  }.merge(valid_attributes)) }
 
     it 'stores the image in s3 with a secure url' do
       expect(fc.image.url).to match /https:\/\/.*\.s3\.amazonaws\.com\/test\/featured_collection\/#{fc.id}\/image\/\d+\/original\/corgi.jpg/

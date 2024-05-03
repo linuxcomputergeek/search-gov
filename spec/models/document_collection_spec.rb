@@ -5,7 +5,7 @@ describe DocumentCollection do
   let(:affiliate) { affiliates(:power_affiliate) }
   let(:valid_attributes) do
     { name: 'My Collection',
-      affiliate: affiliate,
+      affiliate: ,
       url_prefixes_attributes: {'0' => {prefix: 'http://www.agency.gov/'}}
     }
   end

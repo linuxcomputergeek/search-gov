@@ -18,11 +18,11 @@ describe ImageSearchesController do
       before do
         allow(Affiliate).to receive(:find_by_name).with('nps.gov').and_return(affiliate)
         allow(ImageSearch).to receive(:new).
-          with(hash_including(affiliate: affiliate, query: 'thunder & lightning')).
+          with(hash_including(affiliate: , query: 'thunder & lightning')).
           and_return(image_search)
         allow(image_search).to receive(:run)
         get :index, params: { affiliate: affiliate.name,
-                              query: query }
+                              query:  }
       end
 
       it { is_expected.to assign_to(:search).with(image_search) }
@@ -52,7 +52,7 @@ describe ImageSearchesController do
           expect(image_search).to receive(:to_json).and_return(search_results_json)
           get :index,
               params: { affiliate: 'nps.gov',
-                        query: query },
+                        query:  },
               format: :json
         end
 
@@ -72,7 +72,7 @@ describe ImageSearchesController do
 
       before do
         expect(ImageSearch).to receive(:new).
-          with(hash_including(affiliate: affiliate,
+          with(hash_including(affiliate: ,
                               query: '')).and_return(image_search)
         expect(image_search).to receive(:run)
         get :index, params: { affiliate: affiliate.name }

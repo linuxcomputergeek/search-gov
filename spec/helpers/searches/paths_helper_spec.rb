@@ -9,7 +9,7 @@ describe Searches::PathsHelper do
   # which is used by this method under the hood.
   describe '#path_for_filterable_search', type: :request do
     context 'I14y search' do
-      let(:i14y_search) { I14ySearch.new(affiliate: affiliate,
+      let(:i14y_search) { I14ySearch.new(affiliate: ,
                                         sort_by: 'date',
                                         tbs: 'm',
                                         per_page: 20,
@@ -17,14 +17,14 @@ describe Searches::PathsHelper do
 
       it 'returns the correct search path' do
         get '/search'
-        expected_params = { affiliate: affiliate, query: 'test query', sort_by: 'date', tbs: 'm' }
-        expect(helper.path_for_filterable_search(i14y_search, {affiliate: affiliate}, {})).to eq(search_path expected_params)
+        expected_params = { affiliate: , query: 'test query', sort_by: 'date', tbs: 'm' }
+        expect(helper.path_for_filterable_search(i14y_search, {affiliate: }, {})).to eq(search_path expected_params)
       end
 
       it 'is based on the original path' do
         get '/search/docs'
-        expected_params = { affiliate: affiliate, query: 'test query', sort_by: 'date', tbs: 'm' }
-        expect(helper.path_for_filterable_search(i14y_search, {affiliate: affiliate}, {})).to eq(docs_search_path expected_params)
+        expected_params = { affiliate: , query: 'test query', sort_by: 'date', tbs: 'm' }
+        expect(helper.path_for_filterable_search(i14y_search, {affiliate: }, {})).to eq(docs_search_path expected_params)
       end
     end
   end

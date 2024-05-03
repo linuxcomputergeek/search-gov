@@ -13,7 +13,7 @@ describe SpellcheckSaytSuggestions, '#perform(wrong,rite)' do
   it 'should apply the correction to existing SaytSuggestions containing the misspelled word' do
     wrong = 'haus'
     rite = 'house'
-    Misspelling.create!(wrong: wrong, rite: rite)
+    Misspelling.create!(wrong: , rite: )
     described_class.perform(wrong, rite)
     expect(affiliates(:basic_affiliate).sayt_suggestions.find_by_phrase('haus')).to be_nil
     expect(affiliates(:basic_affiliate).sayt_suggestions.find_by_phrase('exhaust')).not_to be_nil

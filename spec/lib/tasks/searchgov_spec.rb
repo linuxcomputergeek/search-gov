@@ -17,7 +17,7 @@ describe 'Search.gov tasks' do
     let(:file_path) { File.join(Rails.root.to_s, 'spec', 'fixtures', 'csv', 'searchgov_urls.csv') }
     let(:task_name) { 'searchgov:promote' }
     let(:url) { 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' }
-    let(:doc_id) { SearchgovUrl.new(url: url).document_id }
+    let(:doc_id) { SearchgovUrl.new(url: ).document_id }
     let(:promote_urls) do
       @rake[task_name].reenable
       @rake[task_name].invoke(file_path)

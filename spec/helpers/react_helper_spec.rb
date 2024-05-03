@@ -6,7 +6,7 @@ describe ReactHelper do
   describe '#search_results_layout' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:vertical) { 'vertical_nav' }
-    let(:search) { WebSearch.new(query: 'chocolate', affiliate: affiliate) }
+    let(:search) { WebSearch.new(query: 'chocolate', affiliate: ) }
     let(:search_options) { {} }
 
     before do
@@ -246,7 +246,7 @@ describe ReactHelper do
     context 'with an affiliate with type ahead suggestions' do
       before do
         allow(search).to receive(:govbox_set).and_return(nil)
-        SaytSuggestion.create!(phrase: 'chocolate bar', affiliate: affiliate)
+        SaytSuggestion.create!(phrase: 'chocolate bar', affiliate: )
         ElasticSaytSuggestion.commit
         search.run
       end
@@ -405,7 +405,7 @@ describe ReactHelper do
       let(:results) { instance_double(ElasticFederalRegisterDocumentResults, total: 1, results: [federal_register_document]) }
 
       before do
-        allow(affiliate).to receive_messages(is_federal_register_document_govbox_enabled?: true, display_created_date_on_search_results?: false, agency: agency)
+        allow(affiliate).to receive_messages(is_federal_register_document_govbox_enabled?: true, display_created_date_on_search_results?: false, agency: )
         allow(federal_register_document).to receive(:contributing_agency_names).and_return(federal_agency_names)
         allow(ElasticFederalRegisterDocument).to receive(:search_for).and_return(results)
         allow(search).to receive(:govbox_set).and_return(govbox_set)
@@ -427,7 +427,7 @@ describe ReactHelper do
   describe '#image_search_results_layout' do
     let(:affiliate) { affiliates(:usagov_affiliate) }
     let(:vertical) { 'vertical_nav' }
-    let(:search) { ImageSearch.new(query: 'chocolate', affiliate: affiliate) }
+    let(:search) { ImageSearch.new(query: 'chocolate', affiliate: ) }
     let(:search_options) { {} }
 
     before do

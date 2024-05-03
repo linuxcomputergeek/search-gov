@@ -14,15 +14,15 @@ describe Click do
   let(:user_agent) { 'mozilla' }
   let(:params) do
     {
-      url: url,
-      query: query,
+      url: ,
+      query: ,
       client_ip: ip,
       affiliate: 'nps.gov',
-      position: position,
-      module_code: module_code,
+      position: ,
+      module_code: ,
       vertical: 'web',
-      user_agent: user_agent,
-      referrer: referrer
+      user_agent: ,
+      referrer: 
     }
   end
 

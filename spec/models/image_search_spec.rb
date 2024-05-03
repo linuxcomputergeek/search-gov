@@ -19,7 +19,7 @@ describe ImageSearch do
 
   describe '#diagnostics' do
     subject(:image_search) do
-      described_class.new(affiliate: affiliate, query: 'corgis', cr: use_commercial_results)
+      described_class.new(affiliate: , query: 'corgis', cr: use_commercial_results)
     end
 
     let(:use_commercial_results) { nil }
@@ -67,7 +67,7 @@ describe ImageSearch do
 
   describe '#run' do
     context 'when Oasis results are blank AND we are on page 1 AND no commercial results override is set AND Bing image results are enabled' do
-      let(:image_search) { described_class.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
+      let(:image_search) { described_class.new(affiliate: , query: 'lsdkjflskjflskjdf') }
       let(:search_engine_adapter) { double(SearchEngineAdapter, results: nil) }
 
       before do
@@ -81,7 +81,7 @@ describe ImageSearch do
         it 'should perform a Bing image search' do
           expect(SearchEngineAdapter).to receive(:new).
             with(BingV7ImageSearch,
-                 hash_including(affiliate: affiliate,
+                 hash_including(affiliate: ,
                                 page: 1,
                                 per_page: 20,
                                 query: 'lsdkjflskjflskjdf')).
@@ -97,7 +97,7 @@ describe ImageSearch do
         it 'performs a BingV7 image search' do
           expect(SearchEngineAdapter).to receive(:new).
             with(BingV7ImageSearch,
-                 hash_including(affiliate: affiliate,
+                 hash_including(affiliate: ,
                                 page: 1,
                                 per_page: 20,
                                 query: 'lsdkjflskjflskjdf')).
@@ -110,7 +110,7 @@ describe ImageSearch do
   end
 
   describe '#spelling_suggestion' do
-    subject(:image_search) { described_class.new(affiliate: affiliate, query: 'lsdkjflskjflskjdf') }
+    subject(:image_search) { described_class.new(affiliate: , query: 'lsdkjflskjflskjdf') }
 
     let(:search_engine_adapter) { double(SearchEngineAdapter, default_module_tag: 'module_tag', results: [], spelling_suggestion: 'spel') }
 

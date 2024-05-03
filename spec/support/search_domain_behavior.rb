@@ -19,7 +19,7 @@ shared_examples 'a search domain object' do
 
     context 'when domain starts with /https?/' do
       %w(http://www.USA.gov https://www.usa.gov).each do |domain|
-        subject { affiliate.site_domains.create!(domain: domain) }
+        subject { affiliate.site_domains.create!(domain: ) }
 
         its(:domain) { should == 'www.usa.gov' }
         its(:site_name) { should == 'www.usa.gov' }

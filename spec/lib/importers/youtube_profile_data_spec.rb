@@ -48,7 +48,7 @@ describe YoutubeProfileData do
     before do
       yt_arel = double('YoutubeProfile arel')
       expect(YoutubeProfile).to receive(:where).
-        with(channel_id: channel_id).
+        with(channel_id: ).
         and_return(yt_arel)
       expect(yt_arel).to receive(:first_or_initialize).and_return(profile)
     end

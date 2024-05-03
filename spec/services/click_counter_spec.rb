@@ -15,7 +15,7 @@ describe ClickCounter do
       end
 
       context 'when a SearchgovUrl record exists for that URL' do
-        let(:searchgov_url) { SearchgovUrl.create!(url: url) }
+        let(:searchgov_url) { SearchgovUrl.create!(url: ) }
 
         it 'updates the click counts for the popular URLs' do
           expect(I14yDocument).to receive(:update).with(

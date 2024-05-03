@@ -58,7 +58,7 @@ describe SaytSuggestionDiscovery, '#perform(affiliate_name, affiliate_id, date_i
       before do
         SaytSuggestion.create!(
           phrase: 'today term1',
-          affiliate: affiliate,
+          affiliate: ,
           deleted_at: Time.current,
           is_protected: true,
           popularity: SaytSuggestion::MAX_POPULARITY

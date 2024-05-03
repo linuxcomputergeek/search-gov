@@ -53,7 +53,7 @@ describe ElasticNewsItem do
       contributor: 'President',
       publisher: 'Briefing Room',
       subject: 'HIV',
-      properties: properties)
+      properties: )
 
     described_class.commit
   end

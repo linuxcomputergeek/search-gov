@@ -12,7 +12,7 @@ describe SaytFilter do
 
     it 'should strip whitespace from phrase before inserting in DB' do
       phrase = ' leading and trailing whitespaces '
-      sf = described_class.create!(phrase: phrase, is_regex: false, filter_only_exact_phrase: true, accept: true)
+      sf = described_class.create!(phrase: , is_regex: false, filter_only_exact_phrase: true, accept: true)
       expect(sf.phrase).to eq(phrase.strip)
       expect(sf.accept).to be true
       expect(sf.is_regex).to be false

@@ -153,7 +153,7 @@ describe Affiliate do
     describe 'on create' do
       it 'updates css_properties with json string from css property hash' do
         css_property_hash = { 'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff' }
-        affiliate = described_class.create!(valid_create_attributes.merge(css_property_hash: css_property_hash))
+        affiliate = described_class.create!(valid_create_attributes.merge(css_property_hash: ))
         expect(JSON.parse(affiliate.css_properties, symbolize_names: true)[:title_link_color]).to eq('#33ff33')
         expect(JSON.parse(affiliate.css_properties, symbolize_names: true)[:visited_title_link_color]).to eq('#0000ff')
       end
@@ -339,7 +339,7 @@ describe Affiliate do
     let(:connected_affiliate) { described_class.create!(display_name: 'connected affiliate', name: 'connectedsite') }
 
     it 'destroys connection' do
-      affiliate.connections.create!(connected_affiliate: connected_affiliate, label: 'search connected affiliate')
+      affiliate.connections.create!(connected_affiliate: , label: 'search connected affiliate')
       expect(described_class.find(affiliate.id).connections.count).to eq(1)
       connected_affiliate.destroy
       expect(described_class.find(affiliate.id).connections.count).to eq(0)
@@ -364,7 +364,7 @@ describe Affiliate do
                                                                            'visited_title_link_color' => valid_color.to_s,
                                                                            'description_text_color' => valid_color.to_s,
                                                                            'url_link_color' => valid_color.to_s })
-        expect(described_class.new(valid_create_attributes.merge(css_property_hash: css_property_hash))).to be_valid
+        expect(described_class.new(valid_create_attributes.merge(css_property_hash: ))).to be_valid
       end
     end
 
@@ -375,7 +375,7 @@ describe Affiliate do
                                                                            'visited_title_link_color' => invalid_color.to_s,
                                                                            'description_text_color' => invalid_color.to_s,
                                                                            'url_link_color' => invalid_color.to_s })
-        affiliate = described_class.new(valid_create_attributes.merge(css_property_hash: css_property_hash))
+        affiliate = described_class.new(valid_create_attributes.merge(css_property_hash: ))
         expect(affiliate).not_to be_valid
         expect(affiliate.errors[:base]).to include('Title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
         expect(affiliate.errors[:base]).to include('Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits')
@@ -465,7 +465,7 @@ describe Affiliate do
     describe 'header tagline validation' do
       let(:affiliate) do
         described_class.new(valid_create_attributes.
-          merge(header_tagline_url: header_tagline_url))
+          merge(header_tagline_url: ))
       end
       let(:header_tagline_url) { 'http://www.google.com' }
 
@@ -626,7 +626,7 @@ describe Affiliate do
   describe '#css_property_hash' do
     context 'when theme is custom' do
       let(:css_property_hash) { { title_link_color: '#33ff33', visited_title_link_color: '#0000ff' }.reverse_merge(Affiliate::DEFAULT_CSS_PROPERTIES) }
-      let(:affiliate) { described_class.create!(valid_create_attributes.merge(theme: 'custom', css_property_hash: css_property_hash)) }
+      let(:affiliate) { described_class.create!(valid_create_attributes.merge(theme: 'custom', css_property_hash: )) }
 
       specify { expect(affiliate.css_property_hash(true)).to eq(css_property_hash) }
     end
@@ -636,7 +636,7 @@ describe Affiliate do
       let(:affiliate) do
         described_class.create!(
           valid_create_attributes.merge(theme: 'default',
-                                        css_property_hash: css_property_hash)
+                                        css_property_hash: )
         )
       end
 
@@ -903,7 +903,7 @@ describe Affiliate do
     context 'when agency org codes are all department level' do
       before do
         agency = Agency.create!(name: 'National Park Service', abbreviation: 'NPS')
-        AgencyOrganizationCode.create!(organization_code: 'GS', agency: agency)
+        AgencyOrganizationCode.create!(organization_code: 'GS', agency: )
         affiliate.agency = agency
       end
 
@@ -915,9 +915,9 @@ describe Affiliate do
     context 'when only some agency org codes are department level' do
       before do
         agency = Agency.create!(name: 'National Park Service', abbreviation: 'NPS')
-        AgencyOrganizationCode.create!(organization_code: 'GS', agency: agency)
-        AgencyOrganizationCode.create!(organization_code: 'AF', agency: agency)
-        AgencyOrganizationCode.create!(organization_code: 'USMI', agency: agency)
+        AgencyOrganizationCode.create!(organization_code: 'GS', agency: )
+        AgencyOrganizationCode.create!(organization_code: 'AF', agency: )
+        AgencyOrganizationCode.create!(organization_code: 'USMI', agency: )
         affiliate.agency = agency
       end
 
@@ -930,8 +930,8 @@ describe Affiliate do
   describe '#default_autodiscovery_url' do
     subject do
       attrs = valid_create_attributes.dup.merge({
-                                                  website: website,
-                                                  site_domains_attributes: site_domains_attributes
+                                                  website: ,
+                                                  site_domains_attributes: 
                                                 }).compact
       described_class.create!(attrs)
     end
@@ -997,7 +997,7 @@ describe Affiliate do
         'title_link_color' => '#33ff33',
         'visited_title_link_color' => '#0000ff'
       }
-      site = described_class.create!(css_property_hash: css_property_hash,
+      site = described_class.create!(css_property_hash: ,
                                      display_name: 'original site',
                                      header_tagline_logo_content_type: 'image/jpeg',
                                      header_tagline_logo_file_name: 'test.jpg',

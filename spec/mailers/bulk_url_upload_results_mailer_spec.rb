@@ -33,7 +33,7 @@ RSpec.describe BulkUrlUploadResultsMailer, type: :mailer do
       results
     end
     let(:mail) do
-      described_class.with(user: user, results: results).results_email
+      described_class.with(user: , results: ).results_email
     end
     let(:mail_body) { mail.body.encoded }
 

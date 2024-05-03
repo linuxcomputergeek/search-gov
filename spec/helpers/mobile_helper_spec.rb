@@ -15,7 +15,7 @@ describe MobileHelper do
         expect(mobile_logo).to receive(:url).and_raise
         affiliate = mock_model(Affiliate,
                                display_name: 'USASearch',
-                               mobile_logo: mobile_logo,
+                               mobile_logo: ,
                                mobile_logo_file_name: 'logo.png',
                                website: nil)
 
@@ -32,7 +32,7 @@ describe MobileHelper do
         affiliate = mock_model(Affiliate,
                                display_name: 'USASearch',
                                header_tagline: 'NISH',
-                               header_tagline_logo: header_tagline_logo,
+                               header_tagline_logo: ,
                                header_tagline_logo_file_name: 'header_tagline_logo.png',
                                header_tagline_url: nil)
         expect(helper.header_tagline_logo(affiliate)).to be_nil

@@ -2,7 +2,7 @@ shared_examples 'a commercial API search' do
   describe '#new' do
     context 'when advanced parameters are included' do
       let(:search_params) do
-        { affiliate: affiliate,
+        { affiliate: ,
           access_key: 'usagov_key',
           format: 'json',
           api_key: 'myawesomekey',
@@ -38,7 +38,7 @@ shared_examples 'a commercial API search as_json' do
       rss_feed_url.news_items.delete_all
 
       news_items = (1..2).map do |i|
-        NewsItem.create!(rss_feed_url: rss_feed_url,
+        NewsItem.create!(rss_feed_url: ,
                          link: "http://www.youtube.com/watch?v=#{i}&feature=youtube_gdata",
                          title: "video #{i}",
                          description: "video news description #{i}",
@@ -73,7 +73,7 @@ shared_examples 'a commercial API search as_json' do
     before do
       rss_feed = search.affiliate.rss_feeds.build(name: 'News')
       url = 'https://search.gov/all.atom'
-      rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.build(url: url)
+      rss_feed_url = RssFeedUrl.rss_feed_owned_by_affiliate.build(url: )
       rss_feed_url.save!(validate: false)
       rss_feed.rss_feed_urls = [rss_feed_url]
       rss_feed.save!

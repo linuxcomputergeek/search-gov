@@ -5,11 +5,11 @@ shared_examples 'a Bing search' do
   let(:enable_highlighting) { nil }
   let(:options) do
     { query: :query,
-      offset: offset,
-      limit: limit,
-      filter: filter,
+      offset: ,
+      limit: ,
+      filter: ,
       language: :language,
-      enable_highlighting: enable_highlighting }
+      enable_highlighting:  }
   end
 
   describe 'params' do

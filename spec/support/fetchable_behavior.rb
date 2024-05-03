@@ -88,13 +88,13 @@ shared_examples_for 'a record with a fetchable url' do
   end
 
   describe 'normalizing URLs when saving' do
-    let(:record) { described_class.new(valid_attributes.merge(url: url)) }
+    let(:record) { described_class.new(valid_attributes.merge(url: )) }
 
     context 'when a blank URL is passed in' do
       let(:url) { '' }
 
       it 'marks record as invalid' do
-        expect(described_class.new(valid_attributes.merge(url: url))).not_to be_valid
+        expect(described_class.new(valid_attributes.merge(url: ))).not_to be_valid
       end
     end
 
@@ -102,7 +102,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { 'https://agency.gov/sdfsdf#anchorme' }
 
       it 'removes it' do
-        expect(described_class.create!(valid_attributes.merge(url: url)).url).
+        expect(described_class.create!(valid_attributes.merge(url: )).url).
           to eq('https://agency.gov/sdfsdf')
       end
     end
@@ -111,7 +111,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { 'HTTPS://Agency.GOV/UsaGovLovesToCapitalize' }
 
       it 'should downcase the scheme and host only' do
-        expect(described_class.create!(valid_attributes.merge(url: url)).url).
+        expect(described_class.create!(valid_attributes.merge(url: )).url).
           to eq('https://agency.gov/UsaGovLovesToCapitalize')
       end
     end
@@ -120,7 +120,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { 'https://agency.gov' }
 
       it 'appends a /' do
-        expect(described_class.create!(valid_attributes.merge(url: url)).url).
+        expect(described_class.create!(valid_attributes.merge(url: )).url).
           to eq('https://agency.gov/')
       end
     end
@@ -129,7 +129,7 @@ shared_examples_for 'a record with a fetchable url' do
       let(:url) { 'https://agency.gov//hey/I/am/usagov/and/love/extra////slashes.shtml' }
 
       it 'collapses the slashes' do
-        expect(described_class.create!(valid_attributes.merge(url: url)).url).
+        expect(described_class.create!(valid_attributes.merge(url: )).url).
           to eq('https://agency.gov/hey/I/am/usagov/and/love/extra/slashes.shtml')
       end
     end

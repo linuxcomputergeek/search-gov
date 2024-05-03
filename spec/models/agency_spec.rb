@@ -54,7 +54,7 @@ describe Agency do
       let(:agency) { described_class.create!(@valid_attributes.merge(federal_register_agency: federal_register_agencies(:fr_irs))) }
 
       before do
-        AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
+        AgencyOrganizationCode.create!(organization_code: 'XX00', agency: )
       end
 
       it 'returns name with Federal Register Agency name' do
@@ -67,7 +67,7 @@ describe Agency do
       let(:agency) { described_class.create!(@valid_attributes) }
 
       before do
-        AgencyOrganizationCode.create!(organization_code: 'XX00', agency: agency)
+        AgencyOrganizationCode.create!(organization_code: 'XX00', agency: )
       end
 
       it 'returns name with Federal Register Agency name' do

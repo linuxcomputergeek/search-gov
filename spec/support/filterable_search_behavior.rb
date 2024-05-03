@@ -127,7 +127,7 @@ shared_examples 'an initialized filterable search' do
 
     time_filter_options.each do |tbs_description, expected_since_str|
       tbs = tbs_description.to_s[0]
-      context "when tbs is last #{tbs_description}", tbs: tbs do
+      context "when tbs is last #{tbs_description}", tbs:  do
         its(:since) { is_expected.to eq(eval expected_since_str) }
       end
     end

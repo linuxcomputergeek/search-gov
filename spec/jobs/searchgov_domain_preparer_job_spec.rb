@@ -5,7 +5,7 @@ describe SearchgovDomainPreparerJob do
 
   let(:searchgov_domain) { searchgov_domains(:basic_domain) }
   let(:args) do
-    { searchgov_domain: searchgov_domain }
+    { searchgov_domain:  }
   end
 
   before do

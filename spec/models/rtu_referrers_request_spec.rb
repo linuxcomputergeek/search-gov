@@ -9,7 +9,7 @@ describe RtuReferrersRequest do
 
   before do
     allow(RtuDateRange).to receive(:new).and_return double(RtuDateRange, available_dates_range: (Date.yesterday..Date.current))
-    allow(RtuTopQueries).to receive(:new).and_return double(RtuTopQueries, top_n: top_n)
+    allow(RtuTopQueries).to receive(:new).and_return double(RtuTopQueries, top_n: )
   end
 
   describe '#save' do
