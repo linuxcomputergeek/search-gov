@@ -54,7 +54,7 @@ module AnalyticsDsl
   end
 
   def type_terms_agg(json, field_name, size)
-    terms_agg(json, field: field_name, size: size) do
+    terms_agg(json, field: field_name, size: ) do
       json.aggs do
         json.type do
           json.terms do

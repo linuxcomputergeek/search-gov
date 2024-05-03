@@ -28,7 +28,7 @@ class SiteAutodiscoverer
 
   def update_site_website(response, url)
     website = response[:last_effective_url] == url ? url : response[:last_effective_url]
-    @site.update!(website: website) if @site.website != website
+    @site.update!(website: ) if @site.website != website
     true
   end
 
@@ -42,7 +42,7 @@ class SiteAutodiscoverer
     favicon_url = extract_favicon_url
     favicon_url ||= detect_default_favicon
     if favicon_url.present? && @site.favicon_url != favicon_url
-      @site.update!(favicon_url: favicon_url)
+      @site.update!(favicon_url: )
       @discovered_resources['Favicon URL'] << favicon_url
     end
   rescue => e
@@ -143,7 +143,7 @@ class SiteAutodiscoverer
     end
 
     if rss_feed_url.new_record?
-      rss_feed.rss_feed_urls.build(rss_feed_owner_type: 'Affiliate', url: url)
+      rss_feed.rss_feed_urls.build(rss_feed_owner_type: 'Affiliate', url: )
     else
       rss_feed.rss_feed_urls = [rss_feed_url]
     end

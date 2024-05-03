@@ -33,7 +33,7 @@ module YoutubeProfileData
   def self.import_profile_by_channel_id(channel_id, title = nil)
     return unless channel_id.present?
 
-    profile = YoutubeProfile.where(channel_id: channel_id).first_or_initialize
+    profile = YoutubeProfile.where(channel_id: ).first_or_initialize
 
     if profile.new_record?
       title ||= YoutubeAdapter.get_channel_title channel_id

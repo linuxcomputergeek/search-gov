@@ -8,7 +8,7 @@ class CaptchaMetrics
   end
 
   def increment_counter_for(activity)
-    statsd.increment(activity, tags: tags)
+    statsd.increment(activity, tags: )
   end
 
   private

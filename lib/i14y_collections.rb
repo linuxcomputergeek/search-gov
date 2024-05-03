@@ -13,7 +13,7 @@ module I14yCollections
   end
 
   def self.create(handle, token)
-    params = { handle: handle, token: token }
+    params = { handle: , token:  }
     response = i14y_connection.post(API_ENDPOINT, params)
     response.body
   end

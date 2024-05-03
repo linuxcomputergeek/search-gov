@@ -65,7 +65,7 @@ class YoutubeData
 
     playlists = playlist_ids.map do |playlist_id|
       profile.youtube_playlists.
-        where(playlist_id: playlist_id).
+        where(playlist_id: ).
         first_or_create!
     end
 
@@ -117,7 +117,7 @@ class YoutubeData
   def process_playlist_item(playlist_news_item_ids, playlist_item)
     video_id = playlist_item.snippet.resource_id.video_id
     link = youtube_video_url video_id
-    news_item = rss_feed_url.news_items.where(link: link).
+    news_item = rss_feed_url.news_items.where(link: ).
       first_or_initialize(guid: video_id)
 
     return news_item if !news_item.new_record? &&
@@ -153,7 +153,7 @@ class YoutubeData
     duration = Duration.seconds_to_hoursminssecs duration_in_seconds
 
     link = youtube_video_url video_id
-    news_item = rss_feed_url.news_items.find_by(link: link)
+    news_item = rss_feed_url.news_items.find_by(link: )
     news_item.duration = duration
     news_item.save!
   end

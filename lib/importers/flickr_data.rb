@@ -15,7 +15,7 @@ class FlickrData
     return unless profile_id
 
     @site.flickr_profiles.
-      where(profile_id: profile_id, profile_type: profile_type).
+      where(profile_id: , profile_type: ).
       first_or_create!(url: @url) do |new_flickr_profile|
       @new_profile_created = true
     end

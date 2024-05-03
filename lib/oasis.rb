@@ -3,12 +3,12 @@ module Oasis
   MRSS_API_ENDPOINT = "/api/v1/mrss_profiles.json"
 
   def self.subscribe_to_mrss(url)
-    params = { url: url }
+    params = { url:  }
     post_subscription(mrss_api_url, params)
   end
 
   def self.subscribe_to_flickr(id, name, profile_type)
-    params = { id: id, name: name, profile_type: profile_type }
+    params = { id: , name: , profile_type:  }
     post_subscription(flickr_api_url, params)
   end
 

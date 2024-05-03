@@ -32,7 +32,7 @@ class RssFeedData
     detect_namespaces
     validation_errors = extract_news_items
     last_crawl_status = generate_last_crawl_status(validation_errors)
-    rss_feed_url.update!(last_crawl_status: last_crawl_status)
+    rss_feed_url.update!(last_crawl_status: )
   rescue => e
     Rails.logger.warn(e)
     rss_feed_url.update!(last_crawl_status: e.message)
@@ -103,7 +103,7 @@ class RssFeedData
       attributes = build_attributes(item, link, published_at)
 
       news_item = news_items.where(guid: attributes[:guid]).first ||
-        news_items.where(link: link).first_or_initialize
+        news_items.where(link: ).first_or_initialize
 
       if link_status_code_404?(link)
         validation_errors << "Linked URL does not exist (HTTP 404)"
@@ -129,7 +129,7 @@ class RssFeedData
   end
 
   def build_attributes(item, link, published_at)
-    attributes = { link: link, published_at: published_at }.reverse_merge(extract_other_attributes(item))
+    attributes = { link: , published_at:  }.reverse_merge(extract_other_attributes(item))
     attributes[:guid] = link if attributes[:guid].blank?
     attributes
   end
@@ -161,7 +161,7 @@ class RssFeedData
 
   def link_status_code_404?(link)
     status = UrlStatusCodeFetcher.fetch(link)[link]
-    DocumentFetchLogger.new(link, 'exists_check', { status: status }).log
+    DocumentFetchLogger.new(link, 'exists_check', { status:  }).log
     status =~ /404/
   end
 

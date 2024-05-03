@@ -77,20 +77,20 @@ class Api::SearchOptions
   end
 
   def attributes
-    { access_key: access_key,
-      affiliate: site,
-      enable_highlighting: enable_highlighting,
-      file_type: file_type,
-      filter: filter,
-      include_facets: include_facets,
-      limit: limit,
+    { access_key: ,
+      affiliate: ,
+      enable_highlighting: ,
+      file_type: ,
+      filter: ,
+      include_facets: ,
+      limit: ,
       next_offset_within_limit: next_offset_within_limit?,
-      offset: offset,
-      query_not: query_not,
-      query_or: query_or,
-      query_quote: query_quote,
-      query: query,
-      site_limits: site_limits }
+      offset: ,
+      query_not: ,
+      query_or: ,
+      query_quote: ,
+      query: ,
+      site_limits:  }
   end
 
   def next_offset_within_limit?

@@ -9,7 +9,7 @@ class Api::CommercialSearchOptions < Api::SearchOptions
   end
 
   def attributes
-    super.merge(api_key: api_key)
+    super.merge(api_key: )
   end
 
   attr_reader :api_key

@@ -11,7 +11,7 @@ module DataGenerator
     def index_search_and_clicks
       indices.each do |index|
         es.index({
-          index: index,
+          index: ,
           type: 'search',
           body: {
             '@version' => 1,
@@ -27,7 +27,7 @@ module DataGenerator
 
         search.clicks.each do |click|
           es.index({
-            index: index,
+            index: ,
             type: 'click',
             body: {
               '@version' => 1,

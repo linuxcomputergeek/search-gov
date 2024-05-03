@@ -70,7 +70,7 @@ module Api::V2::SearchAsJson
       url: news_item.link,
       snippet: news_item.description,
       publication_date: news_item.published_at.to_date.to_fs(:db),
-      source: source }
+      source:  }
   end
 
   def as_json_federal_register_documents
@@ -94,7 +94,7 @@ module Api::V2::SearchAsJson
     jobs.collect do |job|
       job_hash = job.to_hash.except('id')
       org_codes = @affiliate.agency ? @affiliate.agency.joined_organization_codes : ''
-      job_hash.merge(org_codes: org_codes)
+      job_hash.merge(org_codes: )
     end
   end
 
@@ -112,7 +112,7 @@ module Api::V2::SearchAsJson
     [{ title: med_topic.medline_title,
        url: med_topic.medline_url,
        snippet: med_topic.truncated_summary,
-       related_topics: related_topics,
-       related_sites: related_sites }]
+       related_topics: ,
+       related_sites:  }]
   end
 end

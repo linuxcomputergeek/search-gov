@@ -46,18 +46,18 @@ class Api::I14ySearchOptions < Api::SearchOptions
   end
 
   def attributes
-    super.merge({ audience: audience,
-                  content_type: content_type,
-                  created_since_date: created_since_date,
-                  created_until_date: created_until_date,
-                  mime_type: mime_type,
-                  searchgov_custom1: searchgov_custom1,
-                  searchgov_custom2: searchgov_custom2,
-                  searchgov_custom3: searchgov_custom3,
-                  since_date: since_date,
-                  sort_by: sort_by,
-                  tags: tags,
-                  until_date: until_date })
+    super.merge({ audience: ,
+                  content_type: ,
+                  created_since_date: ,
+                  created_until_date: ,
+                  mime_type: ,
+                  searchgov_custom1: ,
+                  searchgov_custom2: ,
+                  searchgov_custom3: ,
+                  since_date: ,
+                  sort_by: ,
+                  tags: ,
+                  until_date:  })
   end
 
   private

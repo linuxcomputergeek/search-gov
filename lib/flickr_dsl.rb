@@ -10,6 +10,6 @@ module FlickrDsl
 
   def lookup_flickr_profile_id(profile_type, url)
     lookup_method = "lookup#{profile_type.capitalize}"
-    flickr.urls.send(lookup_method, url: url)['id'] rescue nil
+    flickr.urls.send(lookup_method, url: )['id'] rescue nil
   end
 end

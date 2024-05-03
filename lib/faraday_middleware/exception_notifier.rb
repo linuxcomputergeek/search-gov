@@ -13,7 +13,7 @@ class FaradayMiddleware::ExceptionNotifier < Faraday::Middleware
   def call(env)
     @app.call(env)
   rescue Faraday::ClientError => e
-    ExceptionNotifier.notify_exception(e, tags: tags)
+    ExceptionNotifier.notify_exception(e, tags: )
     raise
   end
 end

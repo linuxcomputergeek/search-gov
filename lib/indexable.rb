@@ -38,7 +38,7 @@ module Indexable
     Es::CustomIndices.client_writers.each do |client|
       client.indices.create(
         index: index_name,
-        body: { settings: settings, mappings: mappings },
+        body: { settings: , mappings:  },
         include_type_name: true
       )
       client.indices.put_alias(index: index_name, name: writer_alias)
@@ -164,7 +164,7 @@ module Indexable
   end
 
   def client_bulk(client, body)
-    response = client.bulk(body: body)
+    response = client.bulk(body: )
     handle_bulk_errors(client, response) if response['errors']
   rescue StandardError => e
     Rails.logger.error "#{Time.now} Client error in #{name}#client_bulk(): #{e}; host: #{host_list(client) }; body: #{body}"

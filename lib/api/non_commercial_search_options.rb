@@ -9,6 +9,6 @@ class Api::NonCommercialSearchOptions < Api::SearchOptions
   end
 
   def attributes
-    super.merge({ sort_by: sort_by })
+    super.merge({ sort_by:  })
   end
 end

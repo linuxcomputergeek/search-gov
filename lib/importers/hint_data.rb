@@ -20,7 +20,7 @@ module HintData
     return unless new_hints.present?
 
     current_hints = new_hints.map do |name, value|
-      hint = Hint.where(name: name).first_or_initialize
+      hint = Hint.where(name: ).first_or_initialize
       hint.value = value
       hint.save!
       hint

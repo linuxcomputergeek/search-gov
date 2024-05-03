@@ -23,7 +23,7 @@ class FederalRegisterDocumentApiParser
     conditions = { agency_ids: [@federal_register_agency_id] }
     conditions[:publication_date] = { gte: Date.current.advance(days: -7) } unless @load_all
 
-    params = { conditions: conditions,
+    params = { conditions: ,
                fields: FIELDS,
                order: :newest,
                per_page: @per_page }

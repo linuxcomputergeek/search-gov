@@ -49,7 +49,7 @@ class SiteFeedUrlData
       raw_description = item.xpath('description').inner_text
       description = Nokogiri::HTML(raw_description).inner_text.squish
       published_at = extract_published_at item, 'pubDate'
-      { url: url, title: title, description: description, published_at: published_at }
+      { url: , title: , description: , published_at:  }
     end
   end
 

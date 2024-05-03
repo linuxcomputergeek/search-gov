@@ -35,7 +35,7 @@ module YoutubeAdapter
 
   def self.get_custom_playlist_ids(channel_id)
     params = {
-      channel_id: channel_id,
+      channel_id: ,
       max_results: 50
     }
 
@@ -96,17 +96,17 @@ module YoutubeAdapter
 
   def self.playlists(part, params_without_page_token, headers = nil, &block)
     playlists_or_playlist_items(:playlists,
-                                part: part,
+                                part: ,
                                 params: params_without_page_token,
-                                headers: headers,
+                                headers: ,
                                 &block)
   end
 
   def self.playlist_items(part, params_without_page_token, headers = nil, &block)
     playlists_or_playlist_items(:playlist_items,
-                                part: part,
+                                part: ,
                                 params: params_without_page_token,
-                                headers: headers,
+                                headers: ,
                                 &block)
   end
 
